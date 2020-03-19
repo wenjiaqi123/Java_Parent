@@ -1,0 +1,62 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 18080
+#####################################################################
+spring:
+  # 项目操作
+  application:
+    # 项目名，使用中划线
+    name: java-zuul-manager
+#####################################################################
+# Eureka 配置
+eureka:
+  # 客户端配置
+  client:
+    # 表示是否将当前模块注册到服务器上，因为该模块是 client，所以需要，不写默认 true
+    register-with-eureka: true
+    # 表示是否获取注册信息，不写默认 true
+    fetch-registry: true
+    # 表示 Eureka 客户端和服务端交互地址
+    service-url:
+      # Eureka客户端向该地址注册
+      defaultZone: http://127.0.0.1:10000/eureka/
+  # 允许各模块跨域访问
+  instance:
+    prefer-ip-address: true
+###########################################################################
+# 网关配置
+zuul:
+  # 路由规则
+  routes:
+    # 规则名【一般与服务名相同】
+    java-base-file:
+      # 路由路径
+      path: /file/**
+      # 跳转服务
+      serverid: java-base-file
+# zuul 服务发现
+ribbon:
+  # 方法调用处理时间
+  ReadTimeout: 6000
+  # 连接时间
+  ConnectTimeout: 6000
+  # 最大自动重试次数
+  maxAutoRetries: 2
+  # 换实例重试次数
+  MaxAutoRetriesNextServer: 2
+###########################################################################
+# 熔断器 配置
+feign:
+  hystrix:
+  # 开启熔断器
+  enabled: true
+hystric:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+

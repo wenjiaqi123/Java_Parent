@@ -1,0 +1,32 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 10001
+#####################################################################
+spring:
+  # 项目操作
+  application:
+    # 项目名，使用中划线
+    name: java-base-file
+  # servlet 配置
+  servlet:
+    #上传文件配置
+    multipart:
+      #启用 http上传处理
+      enabled: true
+      #最大上传大小1G【默认1M】
+      max-file-size: 1024MB
+      max-request-size: 2048MB
+#####################################################################
+fdfs:
+  # 读取时间
+  so-timeout: 1500
+  # 连接超时时间
+  connect-timeout: 6000
+  # tracker 服务配置地址列表
+  tracker-list: 106.15.238.19:22122
+  # 连接池
+  pool:
+    # 解决框架间连接池冲突
+    jmx-enabled: false
