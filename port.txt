@@ -1,5 +1,8 @@
 config      配置服务        9999
 eureka      注册中心        10000
 
-manager     后台网关        18080
 web         前台网关        8080
+manager     后台网关        18080
+
+file        文件服务        10001
+sms         短信服务        10002
