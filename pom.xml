@@ -19,14 +19,39 @@
         <module>java_zuul_web</module>
         <!--后台网关模块-->
         <module>java_zuul_manager</module>
+        <!--文件上传模块-->
         <module>java_base_file</module>
+        <!--短信服务模块-->
+        <module>java_base_sms</module>
+        <!--注册登录模块-->
+        <module>java_login</module>
+        <!--后台注册登录-->
+        <module>java_login_admin</module>
+        <!--轮播图模块-->
+        <module>java_chart</module>
+        <!--课程模块-->
+        <module>java_course</module>
+        <!--题目答案模块-->
+        <module>java_qa</module>
+        <!--推送模块-->
+        <module>java_websocket</module>
+        <!--建议反馈模块-->
+        <module>java_feedback</module>
+        <!--笑话模块-->
+        <module>java_joke</module>
+        <!--icu模块-->
+        <module>java_icu</module>
+        <!--聊天模块，类似知乎-->
+        <module>java_talk</module>
+        <!--使用mysql通用jar包聚合-->
+        <module>java_mysql</module>
     </modules>
 
     <!--打包方式，因为是聚合工程，打包pom-->
     <packaging>pom</packaging>
 
     <name>Java_Parent Maven Webapp</name>
-    <url>http://www.example.com</url>
+    <url>http://www.wyxjava.com</url>
 
     <!--基于springboot-->
     <parent>

@@ -1,8 +1,25 @@
+#系统服务
 config      配置服务        9999
 eureka      注册中心        10000
 
+#网关
 web         前台网关        8080
 manager     后台网关        18080
 
+#基础服务
 file        文件服务        10001
 sms         短信服务        10002
+websocket   推送            10003
+
+
+#项目模块
+login       注册登录        10100
+login-admin 后台登录注册     10200
+chart       轮播图          10101
+course      课程            10102  
+feedback    建议反馈         10103  
+icu         996.icu         10104  
+joke        笑话             10105  
+qa          问题答案         10106  
+talk        码农交流         10107
+

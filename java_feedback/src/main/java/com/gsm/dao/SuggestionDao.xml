@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.SuggestionDao">
+
+    <resultMap type="com.gsm.entity.Suggestion" id="SuggestionMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="suggestType" column="suggest_type" jdbcType="INTEGER"/>
+        <result property="suggestDesc" column="suggest_desc" jdbcType="VARCHAR"/>
+        <result property="iphoneNo" column="iphone_no" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SuggestionMap">
+        select
+          id, suggest_type, suggest_desc, iphone_no, email, status
+        from wyxjava.suggestion
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SuggestionMap">
+        select
+          id, suggest_type, suggest_desc, iphone_no, email, status
+        from wyxjava.suggestion
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SuggestionMap">
+        select
+          id, suggest_type, suggest_desc, iphone_no, email, status
+        from wyxjava.suggestion
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="suggestType != null">
+                and suggest_type = #{suggestType}
+            </if>
+            <if test="suggestDesc != null and suggestDesc != ''">
+                and suggest_desc = #{suggestDesc}
+            </if>
+            <if test="iphoneNo != null and iphoneNo != ''">
+                and iphone_no = #{iphoneNo}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into wyxjava.suggestion(suggest_type, suggest_desc, iphone_no, email, status)
+        values (#{suggestType}, #{suggestDesc}, #{iphoneNo}, #{email}, #{status})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wyxjava.suggestion
+        <set>
+            <if test="suggestType != null">
+                suggest_type = #{suggestType},
+            </if>
+            <if test="suggestDesc != null and suggestDesc != ''">
+                suggest_desc = #{suggestDesc},
+            </if>
+            <if test="iphoneNo != null and iphoneNo != ''">
+                iphone_no = #{iphoneNo},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wyxjava.suggestion where id = #{id}
+    </delete>
+
+</mapper>
