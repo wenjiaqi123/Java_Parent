@@ -6,6 +6,7 @@ import com.netflix.zuul.exception.ZuulException;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * zuul网关过滤器
@@ -53,14 +54,27 @@ public class ManagerFilter extends ZuulFilter {
         //得到request域
         HttpServletRequest request = currentContext.getRequest();
         //得到头信息
-        String header = request.getHeader("Authorization");
+        String authorization = request.getHeader("Authorization");
         //判断是否有头信息
-        if (header != null && !"".equals(header)) {
+        if (authorization != null && !"".equals(authorization)) {
             //头信息转发
-            currentContext.addZuulRequestHeader("Authorization", header);
+            currentContext.addZuulRequestHeader("Authorization", authorization);
         }
+
         //终止运行
         //requestContext.setSendZuulResponse(false);
+
+        HttpServletResponse response = currentContext.getResponse();
+        //改变同源策略，允许任意源请求
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        //改变同源策略，允许任意请求方式
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        //改变同源策略，允许任意请求头
+        response.setHeader("Access-Control-Allow-Headers", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+        //浏览器缓存预检请求时长 单位秒 24 * 60 * 60 = 86400 一天
+        response.setHeader("Access-Control-Max-Age", "600");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         return null;
     }
 }

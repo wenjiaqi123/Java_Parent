@@ -1,0 +1,45 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 10002
+#####################################################################
+spring:
+  # 项目操作
+  application:
+    # 项目名，使用中划线
+    name: java-base-sms
+  # RabbitMQ 配置
+  rabbitmq:
+    # ip地址
+    host: 106.15.238.19
+    # 端口
+    port: 5672
+  # redis 配置项
+  redis:
+    # 主机地址
+    host: 106.15.238.19
+    #端口
+    port: 6379
+#####################################################################
+# Eureka 配置
+eureka:
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+#####################################################################
+# 短信配置
+sms:
+  # 阿里云短信 AccessKeyId
+  accessKeyId: LTAI4Fss1dL4Kx4NZNuLe6nE
+  # 阿里云短信 AccessKeySecret
+  accessKeySecret: 7vowAa7kOnpoiY4C2D5wkQzSStFK48
+  # 阿里云短信 SignName
+  signName: 我要学Java
+  # 模板  您正在申请手机注册，验证码为：${code}！
+  iphoneRegister: SMS_166475575
+  # 模板  您的验证码：${code}，您正进行身份验证，打死不告诉别人！
+  smsVerify: SMS_160856798
+  # 过期时间，秒
+  expireTime: 300

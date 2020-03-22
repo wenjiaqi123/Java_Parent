@@ -7,7 +7,7 @@ public class StatusCode {
     //成功
     public static final int OK = 20000;
     //失败
-    public static final int ERROR = 20001;
+    public static final int ERROR = 500;
     //用户名或密码错误
     public static final int ERROR_LOGIN = 20002;
     //权限不足

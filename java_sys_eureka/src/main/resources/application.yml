@@ -16,3 +16,6 @@ eureka:
     service-url:
       # 当服务端发布后，Eureka客户端需要向该地址注册
       defaultZone: http://127.0.0.1:${server.port}/eureka/
+ribbon:
+  eureka:
+    ebabled: true

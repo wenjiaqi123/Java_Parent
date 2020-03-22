@@ -28,20 +28,75 @@ eureka:
 ###########################################################################
 # 网关配置
 zuul:
+  # 防止 x-www-form-urlencoded 请求post参数丢失
+  FormBodyWrapperFilter:
+    pre:
+      disable: true
+  max:
+    host:
+      connections: 500
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
   # 路由规则
   routes:
     # 规则名【一般与服务名相同】
+    # 文件服务
     java-base-file:
-      # 路由路径
       path: /file/**
-      # 跳转服务
       serverid: java-base-file
+    # 短信发送
+    java-base-sms:
+      path: /sms/**
+      serverid: java-base-sms
+    # 登录注册
+    java-login:
+      path: /login/**
+      serverid: java-login
+    # 后台登录注册
+   #java-login-admin:
+   #  path: /admin/**
+   #  serverid: java-login-admin
+    service-feign: /admin/**
+    service-ribbon: /admin/**
+    # 轮播图
+    java-chart:
+      path: /chart/**
+      serverid: java-chart
+    # 课程
+    java-course:
+      path: /course/**
+      serverid: java-course
+    # 反馈
+    java-feedback:
+      path: /feedback/**
+      serverid: java-feedback
+    # 996.icu
+    java-icu:
+      path: /icu/**
+      serverid: java-icu
+    # 笑话
+    java-joke:
+      path: /joke/**
+      serverid: java-joke
+    # 问题与答案
+    java-qa:
+      path: /qa/**
+      serverid: java-qa
+    # 码农交流
+    java-talk:
+      path: /talk/**
+      serverid: java-talk
+    # 消息推送
+    java-websocket:
+      path: /websocket/**
+      serverid: java-websocket
 # zuul 服务发现
 ribbon:
   # 方法调用处理时间
-  ReadTimeout: 6000
+  ReadTimeout: 60000
   # 连接时间
-  ConnectTimeout: 6000
+  ConnectTimeout: 60000
   # 最大自动重试次数
   maxAutoRetries: 2
   # 换实例重试次数
@@ -56,7 +111,12 @@ hystric:
   command:
     default:
       execution:
+        timeout:
+          enable: true
         isolation:
           thread:
             timeoutInMilliseconds: 6000
+            ribbon:
+              ReadTimeout: 60000
+              ConnectTimeout: 60000
 

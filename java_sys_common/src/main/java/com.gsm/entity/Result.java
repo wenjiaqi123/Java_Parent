@@ -22,9 +22,20 @@ public class Result {
     //返回数据
     private Object data;
 
+    public Result(Boolean flag, Integer code) {
+        this.flag = flag;
+        this.code = code;
+    }
+
     public Result(Boolean flag, Integer code, String message) {
         this.flag = flag;
         this.code = code;
         this.message = message;
+        if ("".equals(message.trim())) {
+            String s = RespCodeMsg.map.get(code);
+            if (!"".equals(s)) {
+                this.message = message;
+            }
+        }
     }
 }

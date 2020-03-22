@@ -6,12 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="java_base_file" />
-        <module name="java_sys_common" />
-        <module name="java_sys_config" />
-        <module name="java_sys_eureka" />
-        <module name="java_zuul_manager" />
+        <module name="java_websocket" />
+        <module name="java_icu" />
         <module name="java_zuul_web" />
+        <module name="java_base_sms" />
+        <module name="java_talk" />
+        <module name="java_chart" />
+        <module name="java_joke" />
+        <module name="java_zuul_manager" />
+        <module name="java_sys_eureka" />
+        <module name="java_sys_config" />
+        <module name="java_feedback" />
+        <module name="java_sys_common" />
+        <module name="java_login_admin" />
+        <module name="java_qa" />
+        <module name="java_login" />
+        <module name="java_mysql" />
+        <module name="java_base_file" />
+        <module name="java_course" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8" />
@@ -19,9 +31,21 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="java_base_file" options="-parameters" />
+      <module name="java_base_sms" options="-parameters" />
+      <module name="java_chart" options="-parameters" />
+      <module name="java_course" options="-parameters" />
+      <module name="java_feedback" options="-parameters" />
+      <module name="java_icu" options="-parameters" />
+      <module name="java_joke" options="-parameters" />
+      <module name="java_login" options="-parameters" />
+      <module name="java_login_admin" options="-parameters" />
+      <module name="java_mysql" options="-parameters" />
+      <module name="java_qa" options="-parameters" />
       <module name="java_sys_common" options="-parameters" />
       <module name="java_sys_config" options="-parameters" />
       <module name="java_sys_eureka" options="-parameters" />
+      <module name="java_talk" options="-parameters" />
+      <module name="java_websocket" options="-parameters" />
       <module name="java_zuul_manager" options="-parameters" />
       <module name="java_zuul_web" options="-parameters" />
     </option>
