@@ -24,9 +24,31 @@
         <module name="java_mysql" />
         <module name="java_base_file" />
         <module name="java_course" />
+        <module name="java_redis" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="java_base_file" target="1.8" />
+      <module name="java_base_sms" target="1.8" />
+      <module name="java_chart" target="1.8" />
+      <module name="java_course" target="1.8" />
+      <module name="java_feedback" target="1.8" />
+      <module name="java_icu" target="1.8" />
+      <module name="java_joke" target="1.8" />
+      <module name="java_login" target="1.8" />
+      <module name="java_login_admin" target="1.8" />
+      <module name="java_mysql" target="1.8" />
+      <module name="Java_Parent" target="1.8" />
+      <module name="java_qa" target="1.8" />
+      <module name="java_redis" target="1.8" />
+      <module name="java_sys_common" target="1.8" />
+      <module name="java_sys_config" target="1.8" />
+      <module name="java_sys_eureka" target="1.8" />
+      <module name="java_talk" target="1.8" />
+      <module name="java_websocket" target="1.8" />
+      <module name="java_zuul_manager" target="1.8" />
+      <module name="java_zuul_web" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -41,6 +63,7 @@
       <module name="java_login_admin" options="-parameters" />
       <module name="java_mysql" options="-parameters" />
       <module name="java_qa" options="-parameters" />
+      <module name="java_redis" options="-parameters" />
       <module name="java_sys_common" options="-parameters" />
       <module name="java_sys_config" options="-parameters" />
       <module name="java_sys_eureka" options="-parameters" />

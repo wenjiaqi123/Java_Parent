@@ -2,7 +2,6 @@ package com.gsm.consumer;
 
 import com.gsm.entity.SmsCode;
 import com.gsm.utils.RandomNumUtils;
-import com.gsm.utils.RedisUtils;
 import com.gsm.utils.SmsCodeUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

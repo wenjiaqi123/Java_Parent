@@ -28,10 +28,6 @@ eureka:
 ###########################################################################
 # 网关配置
 zuul:
-  # 防止 x-www-form-urlencoded 请求post参数丢失
-  FormBodyWrapperFilter:
-    pre:
-      disable: true
   max:
     host:
       connections: 500
@@ -54,11 +50,9 @@ zuul:
       path: /login/**
       serverid: java-login
     # 后台登录注册
-   #java-login-admin:
-   #  path: /admin/**
-   #  serverid: java-login-admin
-    service-feign: /admin/**
-    service-ribbon: /admin/**
+    java-login-admin:
+      path: /admin/**
+      serverid: java-login-admin
     # 轮播图
     java-chart:
       path: /chart/**
@@ -115,7 +109,7 @@ hystric:
           enable: true
         isolation:
           thread:
-            timeoutInMilliseconds: 6000
+            timeoutInMilliseconds: 60000
             ribbon:
               ReadTimeout: 60000
               ConnectTimeout: 60000
