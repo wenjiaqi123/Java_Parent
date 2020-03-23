@@ -1,0 +1,24 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 9999
+#####################################################################
+spring:
+  # 项目操作
+  application:
+    # 项目名，使用中划线
+    name: java-sys-config
+  # 获取配置信息
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/wjq303812/wyxjava.git
+#####################################################################
+# 曝露触发消息总线的地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
