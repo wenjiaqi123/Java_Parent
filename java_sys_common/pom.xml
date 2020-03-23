@@ -37,7 +37,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-
         <!--lombok简化POJO开发-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -49,6 +48,13 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.0.5</version>
+        </dependency>
+
+        <!--jwt-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.6.0</version>
         </dependency>
     </dependencies>
 </project>

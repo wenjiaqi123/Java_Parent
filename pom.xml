@@ -45,6 +45,9 @@
         <module>java_mysql</module>
         <!--使用redis通用jar包聚合-->
         <module>java_redis</module>
+        <module>template_redis</module>
+        <module>aaaaa_redis</module>
+        <module>aaaaa_mysql</module>
     </modules>
     <!--子模块-->
     <version>1.0-SNAPSHOT</version>

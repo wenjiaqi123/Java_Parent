@@ -1,6 +1,7 @@
 package com.gsm;
 
 import com.gsm.utils.IdUtils;
+import com.gsm.utils.JwtUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,5 +27,10 @@ public class JavaLoginAdminApplication {
     @Bean
     public IdUtils getId(){
         return new IdUtils(1,1);
+    }
+
+    @Bean
+    public JwtUtils getJwt(){
+        return new JwtUtils();
     }
 }
