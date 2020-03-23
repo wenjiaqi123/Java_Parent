@@ -24,25 +24,7 @@ public class SysUserController {
      * 通过主键查询单条数据
      */
     @PostMapping("selectSysUser")
-    public Result selectSysUser(SysUser sysUser) {
-        LoginUser loginUser = sysUserService.selectSysUserByAccountAndPwd(sysUser);
-        if (loginUser.getSysUser() == null && loginUser.getToken() == null) {
-            Result result = new Result(false, StatusCode.ERROR_LOGIN);
-            return result;
-        }
-        Result result = Result.builder()
-                .flag(true)
-                .code(StatusCode.OK)
-                .data(loginUser)
-                .build();
-        return result;
-    }
-
-    /**
-     * 通过主键查询单条数据
-     */
-    @PostMapping("aa")
-    public Result aa(@RequestBody SysUser sysUser) {
+    public Result selectSysUser(@RequestBody SysUser sysUser) {
         LoginUser loginUser = sysUserService.selectSysUserByAccountAndPwd(sysUser);
         if (loginUser.getSysUser() == null && loginUser.getToken() == null) {
             Result result = new Result(false, StatusCode.ERROR_LOGIN);
