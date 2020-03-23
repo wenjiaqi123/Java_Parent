@@ -4,21 +4,21 @@ import cn.hutool.core.util.IdUtil;
 import org.springframework.stereotype.Component;
 
 /**
- * token 工具类
+ * uuid 工具类
  */
 @Component
-public class TokenUtils {
+public class UUIDUtils {
 
     /**
      * 获得 Token
      */
-    public static String getToken() {
-        String token = IdUtil.simpleUUID();
-        return token;
+    public static String getUUID() {
+        String uuid = IdUtil.simpleUUID();
+        return uuid;
     }
 
     public static void main(String[] args) {
-        String token = getToken();
-        System.out.println(token);
+        String uuid = getUUID();
+        System.out.println(uuid);
     }
 }

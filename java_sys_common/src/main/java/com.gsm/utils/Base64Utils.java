@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 111111      ->       MTExMTEx        ->      TVRFeE1URXg=
  */
 @Component
-public class PwdUtils {
+public class Base64Utils {
 
     /**
      * 使用 base64 加密

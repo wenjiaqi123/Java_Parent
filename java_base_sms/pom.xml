@@ -18,12 +18,6 @@
             <artifactId>java_sys_common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--通用模块-->
-        <dependency>
-            <groupId>com.gsm</groupId>
-            <artifactId>java_redis</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <!--阿里云短信核心配置文件-->
         <dependency>
             <groupId>com.aliyun</groupId>
@@ -34,6 +28,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <!--spring-boot-starter-data-redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--redis jedis用-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
 </project>

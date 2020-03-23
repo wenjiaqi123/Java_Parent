@@ -17,7 +17,7 @@ public class TransactionConfig {
     //拦截面
     private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.gsm.com.gsm.service..*(..))";
 
-    /*@Autowired
+    @Autowired
     private PlatformTransactionManager transactionManager;
 
     @Bean
@@ -48,11 +48,11 @@ public class TransactionConfig {
         attributeSource.addTransactionalMethod("query*",txAttrRequiredReadonly);
         attributeSource.addTransactionalMethod("count*",txAttrRequiredReadonly);
         attributeSource.addTransactionalMethod("select*",txAttrRequiredReadonly);
-        *//**
+        /**
          * 配置事务管理器
          *      transactionManager      事务管理器
          *      attributeSource         事务规则
-         *//*
+         */
         TransactionInterceptor txAdvice = new TransactionInterceptor(transactionManager,attributeSource);
         return txAdvice;
     }
@@ -66,5 +66,5 @@ public class TransactionConfig {
         //将切面和拦截规则织入
         DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(pointcut,txAdvice());
         return advisor;
-    }*/
+    }
 }

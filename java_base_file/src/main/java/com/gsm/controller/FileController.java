@@ -14,8 +14,10 @@ public class FileController {
     private FileService fileService;
 
     @PostMapping("/file")
-    public String insertFile(MultipartFile file){
+    public String insertFile(MultipartFile file) {
+        System.out.println(1);
         String s = fileService.insertFile(file);
+        System.out.println(2);
         return s;
     }
 }

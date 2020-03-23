@@ -18,6 +18,7 @@ public class GlobalExceptionHandler{
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Result handler(HttpServletRequest request, HttpServletResponse response, Exception e) {
+        //出现异常也给前台返回200
         response.setStatus(200);
         //返回结果集
         Result result = Result.builder()
