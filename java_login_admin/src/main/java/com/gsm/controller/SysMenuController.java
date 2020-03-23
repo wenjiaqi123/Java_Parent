@@ -1,5 +1,6 @@
 package com.gsm.controller;
 
+import com.gsm.entity.Result;
 import com.gsm.entity.SysMenu;
 import com.gsm.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,10 @@ public class SysMenuController {
     @Autowired
     private SysMenuService sysMenuService;
 
-    /**
-     * 通过主键查询单条数据
-     */
-    @GetMapping("selectOne")
-    public SysMenu selectOne(Long id) {
-        return this.sysMenuService.queryById(id);
+    @GetMapping("menus/{userId}")
+    public Result selectMenuList(@PathVariable("userId") Long userId) {
+        Result result = sysMenuService.selectMenuListByUserId(userId);
+        return result;
     }
 
 }

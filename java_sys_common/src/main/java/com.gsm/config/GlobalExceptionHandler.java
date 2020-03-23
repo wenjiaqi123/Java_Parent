@@ -26,6 +26,9 @@ public class GlobalExceptionHandler{
                 .code(StatusCode.ERROR)
                 .message(e.getClass().toString() + ": " + e.getLocalizedMessage())
                 .build();
+        if(e instanceof MyException){
+            result.setMessage(e.getMessage());
+        }
         return result;
     }
 

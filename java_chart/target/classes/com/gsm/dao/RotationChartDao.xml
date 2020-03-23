@@ -76,4 +76,25 @@
         delete from wyxjava.rotation_chart where id = #{id}
     </delete>
 
+    <select id="selectCharts" parameterType="RotationChart" resultType="RotationChart">
+        select t.chart_id,
+               t.chart_url,
+               t.web_url,
+               t.status
+        from rotation_chart t
+        <where>
+            <if test="chartId != null">
+                and chart_id = #{chartId}
+            </if>
+            <if test="chartUrl != null and chartUrl != ''">
+                and chart_url = #{chartUrl}
+            </if>
+            <if test="webUrl != null and webUrl != ''">
+                and web_url = #{webUrl}
+            </if>
+            <if test="status != -1">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
 </mapper>

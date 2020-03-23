@@ -1,47 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+  <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aaaaa_mysql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aaaaa_mysql/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aaaaa_mysql/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aaaaa_redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aaaaa_redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aaaaa_redis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_base_file" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_base_file/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_base_file/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_base_sms" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_base_sms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_base_sms/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_chart" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_chart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_chart/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_course" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_course/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_course/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_feedback" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_feedback/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_feedback/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_icu" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_icu/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_icu/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_joke" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_joke/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_joke/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_login" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_login/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_login/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_login_admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_login_admin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/java_mysql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_login_admin/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_qa" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_qa/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/java_redis" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/java_redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_qa/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_sys_common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_sys_config/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_sys_eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_sys_eureka/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_talk" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_talk/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_talk/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_websocket" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_websocket/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_zuul_manager" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_zuul_manager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_zuul_manager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_zuul_web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/java_zuul_web/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/template_redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java_zuul_web/src/main/resources" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

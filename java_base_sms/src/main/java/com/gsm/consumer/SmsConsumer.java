@@ -2,6 +2,7 @@ package com.gsm.consumer;
 
 import com.gsm.entity.SmsCode;
 import com.gsm.utils.RandomNumUtils;
+import com.gsm.utils.RedisUtils;
 import com.gsm.utils.SmsCodeUtils;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -9,7 +10,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import utils.RedisUtils;
 
 @Component
 @RabbitListener(queues = "sms")

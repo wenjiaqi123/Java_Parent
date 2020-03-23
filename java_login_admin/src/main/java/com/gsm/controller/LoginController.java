@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-03-22 15:09:17
  */
 @RestController
-@RequestMapping("sysUser")
-public class SysUserController {
+@RequestMapping("login")
+public class LoginController {
     @Autowired
     private SysUserService sysUserService;
 

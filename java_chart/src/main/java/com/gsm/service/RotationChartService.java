@@ -1,5 +1,6 @@
 package com.gsm.service;
 
+import com.gsm.entity.Result;
 import com.gsm.entity.RotationChart;
 import java.util.List;
 
@@ -52,4 +53,5 @@ public interface RotationChartService {
      */
     boolean deleteById(Integer id);
 
+    Result selectCharts(Integer page, Integer rows, RotationChart chart);
 }

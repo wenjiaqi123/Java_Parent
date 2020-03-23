@@ -13,7 +13,7 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    @PostMapping("/file")
+    @PostMapping("/addFile")
     public String insertFile(MultipartFile file) {
         System.out.println(1);
         String s = fileService.insertFile(file);
