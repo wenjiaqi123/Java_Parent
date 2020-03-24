@@ -4,83 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsm.dao.CourseDao">
 
-    <resultMap type="com.gsm.entity.Course" id="CourseMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
-        <result property="courseName" column="course_name" jdbcType="VARCHAR"/>
-        <result property="subjectId" column="subject_id" jdbcType="INTEGER"/>
-        <result property="showOrder" column="show_order" jdbcType="INTEGER"/>
-        <result property="status" column="status" jdbcType="INTEGER"/>
-    </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="CourseMap">
-        select
-          id, course_name, subject_id, show_order, status
-        from wyxjava.course
-        where id = #{id}
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="CourseMap">
-        select
-          id, course_name, subject_id, show_order, status
-        from wyxjava.course
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="CourseMap">
-        select
-          id, course_name, subject_id, show_order, status
-        from wyxjava.course
+    <!--查询数据-->
+    <select id="courseLists" parameterType="Course" resultType="Course">
+        select t.chart_id,
+        t.chart_url,
+        t.web_url,
+        t.status
+        from rotation_chart t
         <where>
-            <if test="id != null">
-                and id = #{id}
+            <if test="chartId != null">
+                and chart_id = #{chartId}
             </if>
-            <if test="courseName != null and courseName != ''">
-                and course_name = #{courseName}
+            <if test="chartUrl != null and chartUrl != ''">
+                and chart_url = #{chartUrl}
             </if>
-            <if test="subjectId != null">
-                and subject_id = #{subjectId}
+            <if test="webUrl != null and webUrl != ''">
+                and web_url = #{webUrl}
             </if>
-            <if test="showOrder != null">
-                and show_order = #{showOrder}
-            </if>
-            <if test="status != null">
+            <if test="status != -1">
                 and status = #{status}
             </if>
         </where>
+        order by t.status desc,chart_id desc
     </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into wyxjava.course(course_name, subject_id, show_order, status)
-        values (#{courseName}, #{subjectId}, #{showOrder}, #{status})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update wyxjava.course
-        <set>
-            <if test="courseName != null and courseName != ''">
-                course_name = #{courseName},
-            </if>
-            <if test="subjectId != null">
-                subject_id = #{subjectId},
-            </if>
-            <if test="showOrder != null">
-                show_order = #{showOrder},
-            </if>
-            <if test="status != null">
-                status = #{status},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from wyxjava.course where id = #{id}
-    </delete>
 
 </mapper>

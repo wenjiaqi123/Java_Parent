@@ -15,7 +15,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 @Configuration
 public class TransactionConfig {
     //拦截面
-    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.gsm.com.gsm.service..*(..))";
+    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.gsm.service..*.*(..))";
 
     @Autowired
     private PlatformTransactionManager transactionManager;
