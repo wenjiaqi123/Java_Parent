@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.SubjectDao">
+
+    <resultMap id="selectSubjectsMap" type="Subject">
+        <id property="subjectId" column="subject_id"/>
+        <result property="subjectName" column="subject_name"/>
+        <result property="status" column="subjectStatus"/>
+
+        <association property="subjectDetails" javaType="com.gsm.entity.SubjectDetails">
+            <id property="subjectDetailsId" column="subject_details_id"/>
+            <result property="subjectId" column="subject_id"/>
+            <result property="subIntroduction" column="sub_introduction"/>
+            <result property="subTeacher" column="sub_teacher"/>
+            <result property="qqGroup" column="qq_group"/>
+            <result property="subPic" column="sub_pic"/>
+            <result property="subTotal" column="sub_total"/>
+            <result property="subScore" column="sub_score"/>
+            <result property="status" column="subjectDetailsStatus"/>
+        </association>
+    </resultMap>
+    <!--查询数据-->
+    <select id="selectSubjects" parameterType="Subject" resultMap="selectSubjectsMap">
+        select t.subject_id,
+                t.subject_name,
+                t.status as subjectStatus,
+                t1.subject_details_id,
+                t1.subject_id,
+                t1.sub_introduction,
+                t1.sub_teacher,
+                t1.qq_group,
+                t1.sub_pic,
+                t1.sub_total,
+                t1.sub_score,
+                t1.status as subjectDetailsStatus
+        from subject t
+        left join subject_details t1 on t.subject_id = t1.subject_id
+        <where>
+            <if test="subjectId != null">
+                and t.subject_id = #{subjectId}
+            </if>
+            <if test="subjectName != null and subjectName != ''">
+                and t.subject_name = #{subjectName}
+            </if>
+            <if test="status != -1">
+                and t.status = #{status}
+            </if>
+        </where>
+        order by t.status desc,t.subject_id asc
+    </select>
+
+    <select id="selectSubjectBySubjectId" parameterType="Long" resultType="Subject">
+        select t.subject_id,
+               t.subject_name,
+               t.status
+        from subject t
+        where t.subject_id = #{subjectId}
+    </select>
+
+
+    <delete id="deleteSubjectById" parameterType="Long">
+        delete from subject
+        where subject_id = #{subjectId}
+    </delete>
+
+    <!--通过主键修改数据-->
+    <update id="updateSubject">
+        update subject
+        <set>
+            <if test="subjectName != null and subjectName != ''">
+                subject_name = #{subjectName},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where subject_id = #{subjectId}
+    </update>
+</mapper>

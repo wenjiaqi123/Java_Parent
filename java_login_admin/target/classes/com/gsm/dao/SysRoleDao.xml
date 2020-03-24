@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.SysRoleDao">
+
+    <select id="selectRoleByUserId" parameterType="Long" resultType="SysRole">
+        select t.role_id,
+               t.role_name,
+               t.status
+        from sys_role t
+        where t.role_id = (select t.role_id
+                           from sys_user_role t
+                           where t.user_id = #{userId})
+    </select>
+</mapper>

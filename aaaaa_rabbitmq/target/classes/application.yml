@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 106.15.238.19
+    port: 5672
+
+fanoutexchange:
+  name: myFanoutExchange

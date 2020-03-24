@@ -1,0 +1,31 @@
+{
+  "name" : "Subject",
+  "comment" : "科目",
+  "fullColumn" : [ {
+    "name" : "subjectId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "subjectName",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "status",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.gsm",
+  "savePath" : "./java_course/src/main/java/com/gsm",
+  "saveModelName" : "java_course"
+}
