@@ -1,5 +1,6 @@
 package com.gsm;
 
+import com.gsm.utils.JwtUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -37,5 +38,10 @@ public class JavaZuulManagerApplication {
         config.addAllowedMethod("PATCH");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
+    }
+
+    @Bean
+    public JwtUtils getJwt(){
+        return new JwtUtils();
     }
 }

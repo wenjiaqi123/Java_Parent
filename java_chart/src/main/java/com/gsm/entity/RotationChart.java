@@ -19,7 +19,7 @@ public class RotationChart{
     /**
     * 主键Id
     */
-    private Integer id;
+    private Long chartId;
     /**
     * 轮播图 URL
     */

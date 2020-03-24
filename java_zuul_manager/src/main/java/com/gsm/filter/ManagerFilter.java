@@ -1,12 +1,19 @@
 package com.gsm.filter;
 
+import com.gsm.config.MyException;
+import com.gsm.entity.Result;
+import com.gsm.utils.JwtUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import io.jsonwebtoken.Claims;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * zuul网关过滤器
@@ -14,6 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @SuppressWarnings("all")
 public class ManagerFilter extends ZuulFilter {
+    @Autowired
+    private JwtUtils jwtUtils;
+    @Value("${jwt.saltKey}")
+    private String saltKey;
+
     @Override
     public String filterType() {
         /**
@@ -53,28 +65,45 @@ public class ManagerFilter extends ZuulFilter {
         RequestContext currentContext = RequestContext.getCurrentContext();
         //得到request域
         HttpServletRequest request = currentContext.getRequest();
+
+        if(request.getMethod().equals("OPTIONS")){
+            return null;
+        }
+        if(request.getRequestURI().indexOf("login")>0){
+            return null;
+        }
+
         //得到头信息
         String authorization = request.getHeader("Authorization");
         //判断是否有头信息
         if (authorization != null && !"".equals(authorization)) {
-            //头信息转发
-            currentContext.addZuulRequestHeader("Authorization", authorization);
+            Claims claims = null;
+            try {
+                //解析 token
+                claims = jwtUtils.parseJwt(authorization);
+                //获取过期时间
+                Date expiration = claims.getExpiration();
+                //如果过期时间在当前时间之前，
+                if(expiration.before(new Date())){
+                    //终止运行
+                    currentContext.setSendZuulResponse(false);
+                }
+                //头信息转发
+                currentContext.addZuulRequestHeader("Authorization", authorization);
+                return null;
+            } catch (Exception e) {
+                //e.printStackTrace();
+                System.out.println("Authorization 非法");
+                //终止运行
+                currentContext.setSendZuulResponse(false);
+            }
         }
 
         //终止运行
-        //requestContext.setSendZuulResponse(false);
-
-        HttpServletResponse response = currentContext.getResponse();
-        //改变同源策略，允许任意源请求
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        //改变同源策略，允许任意请求方式
-        response.setHeader("Access-Control-Allow-Methods", "*");
-        //改变同源策略，允许任意请求头
-        response.setHeader("Access-Control-Allow-Headers", "*");
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-        //浏览器缓存预检请求时长 单位秒 24 * 60 * 60 = 86400 一天
-        response.setHeader("Access-Control-Max-Age", "600");
-        response.setHeader("Access-Control-Allow-Credentials", "true");
+        currentContext.setSendZuulResponse(false);
+        currentContext.setResponseStatusCode(403);
+        currentContext.setResponseBody("权限不足");
+        currentContext.getResponse().setContentType("application/json;charset=utf-8");
         return null;
     }
 }

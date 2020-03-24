@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 系统菜单(SysMenu)实体类
  *
@@ -31,10 +33,11 @@ public class SysMenu{
     /**
     * 菜单的父id
     */
-    private Integer menuPid;
+    private Long menuPid;
     /**
     * 显示顺序
     */
     private Integer showOrder;
 
+    private List<SysMenu> sysMenuList;
 }

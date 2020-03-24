@@ -1,5 +1,6 @@
 package com.gsm.controller;
 
+import com.gsm.entity.Result;
 import com.gsm.entity.RotationChart;
 import com.gsm.service.RotationChartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,12 @@ public class RotationChartController {
     private RotationChartService rotationChartService;
 
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     * 查询轮播图
      */
-    @GetMapping("selectOne")
-    public RotationChart selectOne(Integer id) {
-        return this.rotationChartService.queryById(id);
+    @GetMapping("selectCharts/{page}/{rows}")
+    public Result selectCharts(@PathVariable("page")Integer page, @PathVariable("rows")Integer rows, RotationChart chart) {
+        Result result = rotationChartService.selectCharts(page,rows,chart);
+        return result;
     }
 
 }

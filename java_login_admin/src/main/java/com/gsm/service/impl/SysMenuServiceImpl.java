@@ -1,11 +1,15 @@
 package com.gsm.service.impl;
 
+import com.gsm.entity.Result;
+import com.gsm.entity.StatusCode;
 import com.gsm.entity.SysMenu;
 import com.gsm.dao.SysMenuDao;
 import com.gsm.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,61 +20,36 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Autowired
     private SysMenuDao sysMenuDao;
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param menuId 主键
-     * @return 实例对象
-     */
     @Override
-    public SysMenu queryById(Long menuId) {
-        return this.sysMenuDao.queryById(menuId);
-    }
+    public Result selectMenuListByUserId(Long userId) {
+        List<SysMenu> list = sysMenuDao.selectMenuListByUserId(userId);
+        List<SysMenu> menuList = new ArrayList<>();
+        List<SysMenu> sonList = new ArrayList<>();
+        Iterator<SysMenu> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            SysMenu next = iterator.next();
+            if (next.getMenuPid() == 0) {
+                menuList.add(next);
+                iterator.remove();
+            } else {
+                sonList.add(next);
+            }
+        }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    @Override
-    public List<SysMenu> queryAllByLimit(int offset, int limit) {
-        return this.sysMenuDao.queryAllByLimit(offset, limit);
-    }
+        menuList.forEach(i -> {
+            Iterator<SysMenu> iterator1 = sonList.iterator();
+            List<SysMenu> temList = new ArrayList<>();
+            while (iterator1.hasNext()) {
+                SysMenu next = iterator1.next();
+                if (next.getMenuPid() == i.getMenuId()) {
+                    temList.add(next);
+                    iterator1.remove();
+                }
+            }
+            i.setSysMenuList(temList);
+        });
 
-    /**
-     * 新增数据
-     *
-     * @param sysMenu 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public SysMenu insert(SysMenu sysMenu) {
-        this.sysMenuDao.insert(sysMenu);
-        return sysMenu;
-    }
-
-    /**
-     * 修改数据
-     *
-     * @param sysMenu 实例对象
-     * @return 实例对象
-     */
-    @Override
-    public SysMenu update(SysMenu sysMenu) {
-        this.sysMenuDao.update(sysMenu);
-        return this.queryById(sysMenu.getMenuId());
-    }
-
-    /**
-     * 通过主键删除数据
-     *
-     * @param menuId 主键
-     * @return 是否成功
-     */
-    @Override
-    public boolean deleteById(Long menuId) {
-        return this.sysMenuDao.deleteById(menuId) > 0;
+        Result result = new Result(true, StatusCode.OK, "", menuList);
+        return result;
     }
 }

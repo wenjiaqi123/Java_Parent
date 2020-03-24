@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Java_Parent.iml" filepath="$PROJECT_DIR$/Java_Parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java_Parent.iml" filepath="$PROJECT_DIR$/.idea/Java_Parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/aaaaa_mysql/aaaaa_mysql.iml" filepath="$PROJECT_DIR$/aaaaa_mysql/aaaaa_mysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/aaaaa_redis/aaaaa_redis.iml" filepath="$PROJECT_DIR$/aaaaa_redis/aaaaa_redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_base_file/java_base_file.iml" filepath="$PROJECT_DIR$/java_base_file/java_base_file.iml" />

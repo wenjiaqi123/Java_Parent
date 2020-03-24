@@ -1,7 +1,12 @@
 package com.gsm.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.gsm.entity.PageResult;
+import com.gsm.entity.Result;
 import com.gsm.entity.RotationChart;
 import com.gsm.dao.RotationChartDao;
+import com.gsm.entity.StatusCode;
 import com.gsm.service.RotationChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,7 +65,7 @@ public class RotationChartServiceImpl implements RotationChartService {
     @Override
     public RotationChart update(RotationChart rotationChart) {
         this.rotationChartDao.update(rotationChart);
-        return this.queryById(rotationChart.getId());
+        return null;
     }
 
     /**
@@ -72,5 +77,14 @@ public class RotationChartServiceImpl implements RotationChartService {
     @Override
     public boolean deleteById(Integer id) {
         return this.rotationChartDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public Result selectCharts(Integer page, Integer rows, RotationChart chart) {
+        PageHelper.startPage(page,rows);
+        List<RotationChart> list = rotationChartDao.selectCharts(chart);
+        PageInfo<RotationChart> pageInfo = new PageInfo<>(list);
+        Result result = new Result(true, StatusCode.OK,"",new PageResult<>(pageInfo.getTotal(),pageInfo.getList()));
+        return result;
     }
 }

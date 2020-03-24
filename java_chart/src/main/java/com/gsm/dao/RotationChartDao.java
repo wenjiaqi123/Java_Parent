@@ -62,4 +62,5 @@ public interface RotationChartDao {
      */
     int deleteById(Integer id);
 
+    List<RotationChart> selectCharts(RotationChart chart);
 }
