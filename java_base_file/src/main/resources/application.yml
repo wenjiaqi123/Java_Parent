@@ -18,20 +18,16 @@ spring:
       #最大上传大小1G【默认1M】
       max-file-size: 1024MB
       max-request-size: 2048MB
+  rabbitmq:
+    host: 106.15.238.19
+    port: 5672
+fanoutExchange:
+  name: fileExchange
 #####################################################################
-# Eureka 配置
 eureka:
-  # 客户端配置
   client:
-    # 表示是否将当前模块注册到服务器上，因为该模块是 client，所以需要，不写默认 true
-    register-with-eureka: true
-    # 表示是否获取注册信息，不写默认 true
-    fetch-registry: true
-    # 表示 Eureka 客户端和服务端交互地址
     service-url:
-      # Eureka客户端向该地址注册
       defaultZone: http://127.0.0.1:10000/eureka/
-  # 允许各模块跨域访问
   instance:
     prefer-ip-address: true
 #####################################################################

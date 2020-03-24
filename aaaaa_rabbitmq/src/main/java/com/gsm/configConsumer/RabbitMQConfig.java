@@ -1,4 +1,4 @@
-package com.gsm.config;
+package com.gsm.configConsumer;
 
 import org.springframework.amqp.support.converter.ContentTypeDelegatingMessageConverter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitmqConfig {
+public class RabbitMQConfig {
 
     /**
      * 传输序列化对象

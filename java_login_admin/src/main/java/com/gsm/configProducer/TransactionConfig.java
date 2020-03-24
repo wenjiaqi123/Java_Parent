@@ -1,4 +1,4 @@
-package com.gsm.config;
+package com.gsm.configProducer;
 
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;

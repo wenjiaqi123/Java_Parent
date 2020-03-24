@@ -24,5 +24,11 @@
             <artifactId>fastdfs-client</artifactId>
             <version>1.26.6</version>
         </dependency>
+
+        <!-- RabbitMQ 消息队列-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -23,5 +23,4 @@ public class SysMenuController {
         Result result = sysMenuService.selectMenuListByUserId(userId);
         return result;
     }
-
 }

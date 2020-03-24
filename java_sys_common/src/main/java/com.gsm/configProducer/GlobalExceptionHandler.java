@@ -1,4 +1,4 @@
-package com.gsm.config;
+package com.gsm.configProducer;
 
 import com.gsm.entity.Result;
 import com.gsm.entity.StatusCode;

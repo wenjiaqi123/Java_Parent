@@ -72,10 +72,12 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from wyxjava.rotation_chart where id = #{id}
+    <delete id="deleteById" parameterType="Long">
+        delete from rotation_chart
+        where chart_id = #{chartId}
     </delete>
 
+    <!--查询数据-->
     <select id="selectCharts" parameterType="RotationChart" resultType="RotationChart">
         select t.chart_id,
                t.chart_url,
@@ -96,5 +98,6 @@
                 and status = #{status}
             </if>
         </where>
+        order by t.status desc,chart_id desc
     </select>
 </mapper>

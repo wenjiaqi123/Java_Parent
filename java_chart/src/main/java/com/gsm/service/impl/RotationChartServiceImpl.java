@@ -68,15 +68,11 @@ public class RotationChartServiceImpl implements RotationChartService {
         return null;
     }
 
-    /**
-     * 通过主键删除数据
-     *
-     * @param id 主键
-     * @return 是否成功
-     */
     @Override
-    public boolean deleteById(Integer id) {
-        return this.rotationChartDao.deleteById(id) > 0;
+    public Result deleteById(Long chartId) {
+        rotationChartDao.deleteById(chartId);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
     }
 
     @Override

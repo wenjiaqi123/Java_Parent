@@ -21,9 +21,18 @@ public class RotationChartController {
     /**
      * 查询轮播图
      */
-    @GetMapping("selectCharts/{page}/{rows}")
+    @GetMapping("charts/{page}/{rows}")
     public Result selectCharts(@PathVariable("page")Integer page, @PathVariable("rows")Integer rows, RotationChart chart) {
         Result result = rotationChartService.selectCharts(page,rows,chart);
+        return result;
+    }
+
+    /**
+     * 根据id删除轮播图
+     */
+    @DeleteMapping("chart/{chartId}")
+    public Result deleteById(@PathVariable("chartId")Long chartId) {
+        Result result = rotationChartService.deleteById(chartId);
         return result;
     }
 

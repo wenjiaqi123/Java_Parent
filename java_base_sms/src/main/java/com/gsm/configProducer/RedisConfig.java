@@ -1,4 +1,4 @@
-package com.gsm.config;
+package com.gsm.configProducer;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
