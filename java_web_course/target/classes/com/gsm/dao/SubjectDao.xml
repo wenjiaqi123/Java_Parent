@@ -4,69 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsm.dao.SubjectDao">
 
-    <resultMap type="com.gsm.entity.Subject" id="SubjectMap">
-        <result property="subjectId" column="subject_id" jdbcType="INTEGER"/>
-        <result property="subjectName" column="subject_name" jdbcType="VARCHAR"/>
-        <result property="status" column="status" jdbcType="INTEGER"/>
+    <resultMap id="selectSubjectsMap" type="Subject">
+        <id property="subjectId" column="subject_id"/>
+        <result property="subjectName" column="subject_name"/>
+        <result property="status" column="subjectStatus"/>
+
+        <association property="subjectDetails" javaType="com.gsm.entity.SubjectDetails">
+            <id property="subjectDetailsId" column="subject_details_id"/>
+            <result property="subjectId" column="subject_id"/>
+            <result property="subIntroduction" column="sub_introduction"/>
+            <result property="subTeacher" column="sub_teacher"/>
+            <result property="qqGroup" column="qq_group"/>
+            <result property="subPic" column="sub_pic"/>
+            <result property="subTotal" column="sub_total"/>
+            <result property="subScore" column="sub_score"/>
+            <result property="status" column="subjectDetailsStatus"/>
+        </association>
     </resultMap>
-
-    <!--查询单个-->
-    <select id="queryById" resultMap="SubjectMap">
-        select
-          subject_id, subject_name, status
-        from wyxjava.subject
-        where subject_id = #{subjectId}
+    <!--查询数据-->
+    <select id="selectSubjects" resultMap="selectSubjectsMap">
+        select t.subject_id,
+                t.subject_name,
+                t.status as subjectStatus,
+                t1.subject_details_id,
+                t1.subject_id,
+                t1.sub_introduction,
+                t1.sub_teacher,
+                t1.qq_group,
+                t1.sub_pic,
+                t1.sub_total,
+                t1.sub_score,
+                t1.status as subjectDetailsStatus
+        from subject t
+        left join subject_details t1 on t.subject_id = t1.subject_id
+        where t.status = 1
+        order by t.subject_id asc
     </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="SubjectMap">
-        select
-          subject_id, subject_name, status
-        from wyxjava.subject
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="SubjectMap">
-        select
-          subject_id, subject_name, status
-        from wyxjava.subject
-        <where>
-            <if test="subjectId != null">
-                and subject_id = #{subjectId}
-            </if>
-            <if test="subjectName != null and subjectName != ''">
-                and subject_name = #{subjectName}
-            </if>
-            <if test="status != null">
-                and status = #{status}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="subjectId" useGeneratedKeys="true">
-        insert into wyxjava.subject(subject_name, status)
-        values (#{subjectName}, #{status})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update wyxjava.subject
-        <set>
-            <if test="subjectName != null and subjectName != ''">
-                subject_name = #{subjectName},
-            </if>
-            <if test="status != null">
-                status = #{status},
-            </if>
-        </set>
-        where subject_id = #{subjectId}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from wyxjava.subject where subject_id = #{subjectId}
-    </delete>
-
 </mapper>

@@ -19,6 +19,7 @@
         <module name="java_sys_eureka" />
         <module name="java_sys_config" />
         <module name="java_feedback" />
+        <module name="java_web_course" />
         <module name="java_sys_common" />
         <module name="java_login_admin" />
         <module name="java_qa" />
@@ -48,6 +49,7 @@
       <module name="java_sys_config" target="1.8" />
       <module name="java_sys_eureka" target="1.8" />
       <module name="java_talk" target="1.8" />
+      <module name="java_web_course" target="1.8" />
       <module name="java_websocket" target="1.8" />
       <module name="java_zuul_manager" target="1.8" />
       <module name="java_zuul_web" target="1.8" />
@@ -72,6 +74,7 @@
       <module name="java_sys_config" options="-parameters" />
       <module name="java_sys_eureka" options="-parameters" />
       <module name="java_talk" options="-parameters" />
+      <module name="java_web_course" options="-parameters" />
       <module name="java_websocket" options="-parameters" />
       <module name="java_zuul_manager" options="-parameters" />
       <module name="java_zuul_web" options="-parameters" />

@@ -20,6 +20,7 @@
       <module fileurl="file://$PROJECT_DIR$/java_sys_config/java_sys_config.iml" filepath="$PROJECT_DIR$/java_sys_config/java_sys_config.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_sys_eureka/java_sys_eureka.iml" filepath="$PROJECT_DIR$/java_sys_eureka/java_sys_eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_talk/java_talk.iml" filepath="$PROJECT_DIR$/java_talk/java_talk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_web_course/java_web_course.iml" filepath="$PROJECT_DIR$/java_web_course/java_web_course.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_websocket/java_websocket.iml" filepath="$PROJECT_DIR$/java_websocket/java_websocket.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_zuul_manager/java_zuul_manager.iml" filepath="$PROJECT_DIR$/java_zuul_manager/java_zuul_manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_zuul_web/java_zuul_web.iml" filepath="$PROJECT_DIR$/java_zuul_web/java_zuul_web.iml" />

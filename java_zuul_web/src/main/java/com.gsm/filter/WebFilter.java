@@ -1,11 +1,15 @@
 package com.gsm.filter;
 
+import com.gsm.utils.JwtUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * zuul网关过滤器
@@ -13,8 +17,25 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @SuppressWarnings("all")
 public class WebFilter extends ZuulFilter {
+    @Autowired
+    private JwtUtils jwtUtils;
+    @Value("${jwt.saltKey}")
+    private String saltKey;
+    @Autowired
+    private HttpServletResponse response;
+
     @Override
     public String filterType() {
+        //改变同源策略，允许任意源请求
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        //改变同源策略，允许任意请求方式
+        response.setHeader("Access-Control-Allow-Methods", "*");
+        //改变同源策略，允许任意请求头
+        response.setHeader("Access-Control-Allow-Headers", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+        //浏览器缓存预检请求时长 单位秒 24 * 60 * 60 = 86400 一天
+        response.setHeader("Access-Control-Max-Age", "600");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         /**
          * 返回值有4种
          * pre      路由请求前调用

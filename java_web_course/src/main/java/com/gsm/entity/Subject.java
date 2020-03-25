@@ -29,4 +29,6 @@ public class Subject{
     */
     private Integer status;
 
+    private SubjectDetails subjectDetails;
+
 }

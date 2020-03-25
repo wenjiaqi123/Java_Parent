@@ -1,5 +1,6 @@
 package com.gsm.controller;
 
+import com.gsm.entity.Result;
 import com.gsm.entity.Subject;
 import com.gsm.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,12 @@ public class SubjectController {
     @Autowired
     private SubjectService subjectService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Subject selectOne(Long id) {
-        return this.subjectService.queryById(id);
+
+    //根据状态查询课程
+    @GetMapping("subjects")
+    public Result selectSubjects() {
+        Result result = subjectService.selectSubjects();
+        return result;
     }
 
 }
