@@ -1,4 +1,4 @@
-package com.gsm.configProducer;
+package com.gsm.config;
 
 import org.springframework.amqp.support.converter.ContentTypeDelegatingMessageConverter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;

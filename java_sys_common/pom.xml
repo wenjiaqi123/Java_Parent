@@ -18,6 +18,14 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.67</version>
+        </dependency>
+
+
         <!--config 配置客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

@@ -39,27 +39,27 @@
     <!--新增所有列-->
     <insert id="insertSubjectDetails" keyProperty="subjectDetailsId" useGeneratedKeys="true">
         insert into subject_details
-        (subject_id,
+        (subject_details_id,
+        subject_id,
         sub_introduction,
         sub_teacher,
         qq_group,
         sub_pic,
         sub_total,
-        sub_score,
-        status)
+        sub_score)
         values
-        (#{subjectId},
+        (#{subjectDetailsId},
+        #{subjectId},
         #{subIntroduction},
         #{subTeacher},
         #{qqGroup},
         #{subPic},
         #{subTotal},
-        #{subScore},
-        #{status})
+        #{subScore})
     </insert>
 
     <!--通过主键修改数据-->
-    <update id="updateSubjectDetails">
+    <update id="updateSubjectDetails" parameterType="SubjectDetails">
         update subject_details
         <set>
             <if test="subjectId != null">
@@ -87,7 +87,7 @@
                 status = #{status},
             </if>
         </set>
-        where subject_details_id = #{subjectDetailsId}
+        where subject_details_id = #{subjectDetailsId} or subject_id = #{subjectId}
     </update>
 
     <!--通过主键删除-->
@@ -101,4 +101,15 @@
         where subject_id = #{subjectId}
     </delete>
 
+    <update id="addOneTotalBySubjectId" parameterType="Long">
+        update subject_details
+            set sub_total = sub_total + 1
+        where subject_id = #{subjectDetailsId}
+    </update>
+
+    <update id="delOneTotalBySubjectId" parameterType="Long">
+        update subject_details
+            set sub_total = sub_total - 1
+        where subject_id = #{subjectDetailsId}
+    </update>
 </mapper>

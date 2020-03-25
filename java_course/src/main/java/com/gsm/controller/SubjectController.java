@@ -31,6 +31,12 @@ public class SubjectController {
         return result;
     }
 
+    @PostMapping("subject")
+    public Result insertSubjectAndDetails(@RequestBody Subject subject) {
+        Result result = subjectService.insertSubjectAndDetails(subject);
+        return result;
+    }
+
     @DeleteMapping("subject/{subjectId}")
     public Result deleteSubjectById(@PathVariable("subjectId")Long subjectId) {
         Result result = subjectService.deleteSubjectById(subjectId);
@@ -40,6 +46,13 @@ public class SubjectController {
     @PutMapping("subject/{subjectId}/{status}")
     public Result updateStatus(@PathVariable("subjectId")Long subjectId,@PathVariable("status")Integer status) {
         Result result = subjectService.updateStatus(subjectId,status);
+        return result;
+    }
+
+    @PutMapping("subjectAndDetails/{subjectId}")
+    public Result updateSubjectAndDetails(@PathVariable("subjectId")Long subjectId,@RequestBody Subject subject) {
+        subject.setSubjectId(subjectId);
+        Result result = subjectService.updateSubjectAndDetails(subject);
         return result;
     }
 }

@@ -6,6 +6,7 @@ import com.gsm.dao.SubjectDetailsDao;
 import com.gsm.entity.*;
 import com.gsm.dao.SubjectDao;
 import com.gsm.service.SubjectService;
+import com.gsm.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class SubjectServiceImpl implements SubjectService {
     private SubjectDao subjectDao;
     @Autowired
     private SubjectDetailsDao subjectDetailsDao;
+    @Autowired
+    private IdUtils idUtils;
 
     @Override
     public Result selectSubjects(Integer page, Integer rows, Subject subject) {
@@ -35,10 +38,26 @@ public class SubjectServiceImpl implements SubjectService {
         Subject subject = subjectDao.selectSubjectBySubjectId(subjectId);
         if (subject != null) {
             Long subjectSubjectId = subject.getSubjectId();
-            SubjectDetails subjectDetails = subjectDetailsDao.selectSubjectDetailsById(subjectSubjectId);
+            SubjectDetails subjectDetails = subjectDetailsDao.selectSubjectDetailsBySubjectId(subjectSubjectId);
             subject.setSubjectDetails(subjectDetails);
         }
         Result result = new Result(true, StatusCode.OK, "", subject);
+        return result;
+    }
+
+    @Override
+    public Result insertSubjectAndDetails(Subject subject) {
+        Long subjectId = idUtils.nextId();
+        subject.setSubjectId(subjectId);
+        //插入课程
+        subjectDao.insertSubject(subject);
+        SubjectDetails subjectDetails = subject.getSubjectDetails();
+        subjectDetails.setSubjectDetailsId(idUtils.nextId());
+        subjectDetails.setSubjectId(subjectId);
+        subjectDetails.setSubTotal(0);
+        //插入课程详细信息
+        subjectDetailsDao.insertSubjectDetails(subjectDetails);
+        Result result = new Result(true, StatusCode.OK);
         return result;
     }
 
@@ -56,6 +75,18 @@ public class SubjectServiceImpl implements SubjectService {
         subject.setSubjectId(subjectId);
         subject.setStatus(status);
         subjectDao.updateSubject(subject);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result updateSubjectAndDetails(Subject subject) {
+        //更新课程信息
+        subjectDao.updateSubject(subject);
+        SubjectDetails subjectDetails = subject.getSubjectDetails();
+        subjectDetails.setSubjectId(subject.getSubjectId());
+        //更新课程详细信息
+        subjectDetailsDao.updateSubjectDetails(subjectDetails);
         Result result = new Result(true, StatusCode.OK);
         return result;
     }

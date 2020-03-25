@@ -22,4 +22,8 @@ public interface SubjectDetailsDao {
     int deleteSubjectDetailsBySubjectDetailsId(Long subjectDetailsId);
 
     int deleteSubjectDetailsBySubjectId(Long subjectId);
+
+    int addOneTotalBySubjectId(Long subjectId);
+
+    int delOneTotalBySubjectId(Long subjectId);
 }

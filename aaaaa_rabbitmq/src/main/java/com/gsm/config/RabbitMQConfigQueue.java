@@ -1,4 +1,4 @@
-package com.gsm.configProducer;
+package com.gsm.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

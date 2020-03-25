@@ -12,6 +12,15 @@ import java.util.List;
  */
 public interface CourseDao {
 
-    List<Course> courseLists(Course course);
+    List<Course> selectCourseLists(Course course);
 
+    Course selectCourseAndDetails(Long courseId);
+
+    int deleteCourseById(Long courseId);
+
+    int insertCourse(Course course);
+
+    Course selectCourseByCourseId(Long courseId);
+
+    int updateCourseByCourseId(Course course);
 }

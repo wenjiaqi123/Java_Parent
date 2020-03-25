@@ -15,7 +15,11 @@ public interface SubjectService {
 
     Result selectSubjectAndDetailsBySubjectId(Long subjectId);
 
+    Result insertSubjectAndDetails(Subject subject);
+
     Result deleteSubjectById(Long subjectId);
 
     Result updateStatus(Long subjectId, Integer status);
+
+    Result updateSubjectAndDetails(Subject subject);
 }

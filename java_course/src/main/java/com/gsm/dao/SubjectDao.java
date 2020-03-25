@@ -18,4 +18,6 @@ public interface SubjectDao {
     int deleteSubjectById(Long subjectId);
 
     int updateSubject(Subject subject);
+
+    int insertSubject(Subject subject);
 }

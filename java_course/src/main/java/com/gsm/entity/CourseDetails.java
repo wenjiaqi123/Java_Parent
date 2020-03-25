@@ -37,7 +37,7 @@ public class CourseDetails{
     /**
     * 课程平均得分
     */
-    private Object courseScore;
+    private Double courseScore;
     /**
     * 1在用  0失效
     */

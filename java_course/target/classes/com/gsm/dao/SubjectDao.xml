@@ -66,7 +66,7 @@
     </delete>
 
     <!--通过主键修改数据-->
-    <update id="updateSubject">
+    <update id="updateSubject" parameterType="Subject">
         update subject
         <set>
             <if test="subjectName != null and subjectName != ''">
@@ -78,4 +78,13 @@
         </set>
         where subject_id = #{subjectId}
     </update>
+
+    <insert id="insertSubject" parameterType="Subject">
+        insert into subject
+        (subject_id,
+         subject_name)
+        values
+        (#{subjectId},
+        #{subjectName})
+    </insert>
 </mapper>

@@ -13,6 +13,13 @@ import java.util.List;
  */
 public interface CourseService {
 
-    Result courseLists(Integer page, Integer rows, Course course);
+    Result selectCourseLists(Course course);
 
+    Result selectCourseAndDetailsAndData(Long courseId);
+
+    Result deleteCourseById(Long courseId);
+
+    Result insertCourse(Course course);
+
+    Result updateCourseAndDetailsAndData(Course course);
 }
