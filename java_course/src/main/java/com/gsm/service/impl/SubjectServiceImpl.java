@@ -63,7 +63,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Result deleteSubjectById(Long subjectId) {
+        //删除课程
         subjectDao.deleteSubjectById(subjectId);
+        //删除课程详细信息
         subjectDetailsDao.deleteSubjectDetailsBySubjectId(subjectId);
         Result result = new Result(true, StatusCode.OK);
         return result;

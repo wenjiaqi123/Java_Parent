@@ -4,28 +4,117 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsm.dao.CourseDao">
 
+    <resultMap id="courseListsMap" type="Course">
+        <id property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
+        <result property="subjectId" column="subject_id"/>
+        <result property="showOrder" column="show_order"/>
+        <result property="status" column="courseStatus"/>
+
+        <association property="courseDetails" javaType="com.gsm.entity.CourseDetails">
+            <id property="courseDetailsId" column="course_details_id"/>
+            <result property="courseId" column="course_id"/>
+            <result property="courseUrl" column="course_url"/>
+            <result property="courseTime" column="course_time"/>
+            <result property="courseSize" column="course_size"/>
+            <result property="courseScore" column="course_score"/>
+            <result property="status" column="courseDetailsStatus"/>
+        </association>
+    </resultMap>
     <!--查询数据-->
-    <select id="courseLists" parameterType="Course" resultType="Course">
-        select t.chart_id,
-        t.chart_url,
-        t.web_url,
-        t.status
-        from rotation_chart t
+    <select id="selectCourseLists" parameterType="Course" resultMap="courseListsMap">
+        select t.course_id,
+                t.course_name,
+                t.subject_id,
+                t.show_order,
+                t.status as courseStatus,
+                t1.course_details_id,
+                t1.course_id,
+                t1.course_url,
+                t1.course_time,
+                t1.course_size,
+                t1.course_score,
+                t1.status as courseDetailsStatus
+        from course t
+            left join course_details t1 on t.course_id = t1.course_id
         <where>
-            <if test="chartId != null">
-                and chart_id = #{chartId}
-            </if>
-            <if test="chartUrl != null and chartUrl != ''">
-                and chart_url = #{chartUrl}
-            </if>
-            <if test="webUrl != null and webUrl != ''">
-                and web_url = #{webUrl}
+            <if test="subjectId != null and subjectId != ''">
+                and t.subject_id = #{subjectId}
             </if>
             <if test="status != -1">
-                and status = #{status}
+                and t.status = #{status}
             </if>
         </where>
-        order by t.status desc,chart_id desc
+        order by t.status desc,t.show_order asc
     </select>
 
+    <resultMap id="selectCourseAndDetailsMap" type="Course">
+        <id property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
+        <result property="subjectId" column="subject_id"/>
+        <result property="showOrder" column="show_order"/>
+        <result property="status" column="courseStatus"/>
+
+        <association property="courseDetails" javaType="com.gsm.entity.CourseDetails">
+            <id property="courseDetailsId" column="course_details_id"/>
+            <result property="courseId" column="course_id"/>
+            <result property="courseUrl" column="course_url"/>
+            <result property="courseTime" column="course_time"/>
+            <result property="courseSize" column="course_size"/>
+            <result property="courseScore" column="course_score"/>
+            <result property="status" column="courseDetailsStatus"/>
+        </association>
+    </resultMap>
+    <!--根据id查询单挑数据-->
+    <select id="selectCourseAndDetails" parameterType="Long" resultMap="selectCourseAndDetailsMap">
+        select t.course_id,
+                t.course_name,
+                t.subject_id,
+                t.show_order,
+                t.status as courseStatus,
+                t1.course_details_id,
+                t1.course_id,
+                t1.course_url,
+                t1.course_time,
+                t1.course_size,
+                t1.course_score,
+                t1.status as courseDetailsStatus
+        from course t
+        left join course_details t1 on t.course_id = t1.course_id
+        where t.course_id = #{courseId}
+    </select>
+
+    <delete id="deleteCourseById" parameterType="Long">
+        delete from course
+        where course_id = #{courseId}
+    </delete>
+
+    <insert id="insertCourse" parameterType="Course">
+        insert into course
+        (course_id,
+         course_name,
+         subject_id,
+         show_order)
+        values
+        (#{courseId},
+         #{courseName},
+         #{subjectId},
+         #{showOrder})
+    </insert>
+
+    <select id="selectCourseByCourseId" parameterType="Long" resultType="Course">
+        select t.course_id,
+               t.course_name,
+               t.subject_id,
+               t.show_order,
+               t.status
+        from course t
+        where t.course_id = #{courseId}
+    </select>
+
+    <update id="updateCourseByCourseId" parameterType="Course">
+        update course
+        set course_name = #{courseName}
+        where course_id = #{courseId}
+    </update>
 </mapper>
