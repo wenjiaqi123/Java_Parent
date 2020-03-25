@@ -1,0 +1,35 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 10102
+#####################################################################
+spring:
+  application:
+    name: java-web-course
+  redis:
+    host: 106.15.238.19
+    port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://cdb-jwd16kdk.bj.tencentcdb.com:10069/wyxjava?useSSL=false&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
+    username: root
+    password: wyxjava123
+###########################################################################
+mybatis:
+  type-aliases-package: com.gsm.entity
+  mapper-locations: classpath:com/gsm/dao/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+# log日志等级,mybatis打印sql
+logging:
+  level:
+    com.gsm.dao: DEBUG
+#####################################################################
+# Eureka 配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+  instance:
+    prefer-ip-address: true
