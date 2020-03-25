@@ -10,19 +10,19 @@ spring:
     # 项目名，使用中划线
     name: java-zuul-web
 #####################################################################
-# Eureka 配置
+# jwt 加密
+jwt:
+  # 盐值
+  saltKey:  wyxjava
+  #过期时间 7*24*60*60=604800 秒
+  expiration: 604800
+#####################################################################
 eureka:
-  # 客户端配置
   client:
-    # 表示是否将当前模块注册到服务器上，因为该模块是 client，所以需要，不写默认 true
     register-with-eureka: true
-    # 表示是否获取注册信息，不写默认 true
     fetch-registry: true
-    # 表示 Eureka 客户端和服务端交互地址
     service-url:
-      # Eureka客户端向该地址注册
       defaultZone: http://127.0.0.1:10000/eureka/
-  # 允许各模块跨域访问
   instance:
     prefer-ip-address: true
 ###########################################################################
@@ -31,11 +31,50 @@ zuul:
   # 路由规则
   routes:
     # 规则名【一般与服务名相同】
-    springcloud-article:
-      # 路由路径
-      #path: /article/**
-      # 跳转服务
-      #serverid: springcloud-article
+    # 文件服务
+    java-base-file:
+      path: /file/**
+      serverid: java-base-file
+    # 短信发送
+    java-base-sms:
+      path: /sms/**
+      serverid: java-base-sms
+    # 登录注册
+    java-login:
+      path: /login/**
+      serverid: java-login
+    # 轮播图
+    java-chart:
+      path: /chart/**
+      serverid: java-chart
+    # 课程
+    java-web-course:
+      path: /course/**
+      serverid: java-web-course
+    # 反馈
+    java-feedback:
+      path: /feedback/**
+      serverid: java-feedback
+    # 996.icu
+    java-icu:
+      path: /icu/**
+      serverid: java-icu
+    # 笑话
+    java-joke:
+      path: /joke/**
+      serverid: java-joke
+    # 问题与答案
+    java-qa:
+      path: /qa/**
+      serverid: java-qa
+    # 码农交流
+    java-talk:
+      path: /talk/**
+      serverid: java-talk
+    # 消息推送
+    java-websocket:
+      path: /websocket/**
+      serverid: java-websocket
 # zuul 服务发现
 ribbon:
   # 方法调用处理时间
@@ -56,7 +95,11 @@ hystric:
   command:
     default:
       execution:
+        timeout:
+          enable: true
         isolation:
           thread:
-            timeoutInMilliseconds: 6000
-
+            timeoutInMilliseconds: 60000
+            ribbon:
+              ReadTimeout: 60000
+              ConnectTimeout: 60000
