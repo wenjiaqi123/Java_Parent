@@ -45,10 +45,6 @@ zuul:
     java-base-sms:
       path: /sms/**
       serverid: java-base-sms
-    # 登录注册
-    java-login:
-      path: /login/**
-      serverid: java-login
     # 后台登录注册
     java-login-admin:
       path: /admin/**
@@ -113,4 +109,3 @@ hystric:
             ribbon:
               ReadTimeout: 60000
               ConnectTimeout: 60000
-

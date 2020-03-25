@@ -15,9 +15,11 @@ websocket   推送            10003
 #项目模块
 login       注册登录        10100
 login-admin 后台登录注册     10200
+
+course      课程            10102
+web-course  课程            10202
 chart       轮播图          10101
-course      课程            10102  
-feedback    建议反馈         10103  
+feedback    建议反馈         10103
 icu         996.icu         10104  
 joke        笑话             10105  
 qa          问题答案         10106  
