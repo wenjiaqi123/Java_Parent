@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.SubjectDetailsDao">
+
+    <resultMap type="com.gsm.entity.SubjectDetails" id="SubjectDetailsMap">
+        <result property="subjectDetailsId" column="subject_details_id" jdbcType="INTEGER"/>
+        <result property="subjectId" column="subject_id" jdbcType="INTEGER"/>
+        <result property="subIntroduction" column="sub_introduction" jdbcType="VARCHAR"/>
+        <result property="subTeacher" column="sub_teacher" jdbcType="VARCHAR"/>
+        <result property="qqGroup" column="qq_group" jdbcType="VARCHAR"/>
+        <result property="subPic" column="sub_pic" jdbcType="VARCHAR"/>
+        <result property="subTotal" column="sub_total" jdbcType="INTEGER"/>
+        <result property="subScore" column="sub_score" jdbcType="OTHER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SubjectDetailsMap">
+        select
+          subject_details_id, subject_id, sub_introduction, sub_teacher, qq_group, sub_pic, sub_total, sub_score, status
+        from wyxjava.subject_details
+        where subject_details_id = #{subjectDetailsId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SubjectDetailsMap">
+        select
+          subject_details_id, subject_id, sub_introduction, sub_teacher, qq_group, sub_pic, sub_total, sub_score, status
+        from wyxjava.subject_details
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SubjectDetailsMap">
+        select
+          subject_details_id, subject_id, sub_introduction, sub_teacher, qq_group, sub_pic, sub_total, sub_score, status
+        from wyxjava.subject_details
+        <where>
+            <if test="subjectDetailsId != null">
+                and subject_details_id = #{subjectDetailsId}
+            </if>
+            <if test="subjectId != null">
+                and subject_id = #{subjectId}
+            </if>
+            <if test="subIntroduction != null and subIntroduction != ''">
+                and sub_introduction = #{subIntroduction}
+            </if>
+            <if test="subTeacher != null and subTeacher != ''">
+                and sub_teacher = #{subTeacher}
+            </if>
+            <if test="qqGroup != null and qqGroup != ''">
+                and qq_group = #{qqGroup}
+            </if>
+            <if test="subPic != null and subPic != ''">
+                and sub_pic = #{subPic}
+            </if>
+            <if test="subTotal != null">
+                and sub_total = #{subTotal}
+            </if>
+            <if test="subScore != null">
+                and sub_score = #{subScore}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="subjectDetailsId" useGeneratedKeys="true">
+        insert into wyxjava.subject_details(subject_id, sub_introduction, sub_teacher, qq_group, sub_pic, sub_total, sub_score, status)
+        values (#{subjectId}, #{subIntroduction}, #{subTeacher}, #{qqGroup}, #{subPic}, #{subTotal}, #{subScore}, #{status})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wyxjava.subject_details
+        <set>
+            <if test="subjectId != null">
+                subject_id = #{subjectId},
+            </if>
+            <if test="subIntroduction != null and subIntroduction != ''">
+                sub_introduction = #{subIntroduction},
+            </if>
+            <if test="subTeacher != null and subTeacher != ''">
+                sub_teacher = #{subTeacher},
+            </if>
+            <if test="qqGroup != null and qqGroup != ''">
+                qq_group = #{qqGroup},
+            </if>
+            <if test="subPic != null and subPic != ''">
+                sub_pic = #{subPic},
+            </if>
+            <if test="subTotal != null">
+                sub_total = #{subTotal},
+            </if>
+            <if test="subScore != null">
+                sub_score = #{subScore},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where subject_details_id = #{subjectDetailsId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wyxjava.subject_details where subject_details_id = #{subjectDetailsId}
+    </delete>
+
+</mapper>

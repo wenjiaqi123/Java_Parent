@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.CourseDetailsDao">
+
+    <resultMap type="com.gsm.entity.CourseDetails" id="CourseDetailsMap">
+        <result property="courseDetailsId" column="course_details_id" jdbcType="INTEGER"/>
+        <result property="courseId" column="course_id" jdbcType="INTEGER"/>
+        <result property="courseUrl" column="course_url" jdbcType="VARCHAR"/>
+        <result property="courseTime" column="course_time" jdbcType="INTEGER"/>
+        <result property="courseSize" column="course_size" jdbcType="INTEGER"/>
+        <result property="courseScore" column="course_score" jdbcType="OTHER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CourseDetailsMap">
+        select
+          course_details_id, course_id, course_url, course_time, course_size, course_score, status
+        from wyxjava.course_details
+        where course_details_id = #{courseDetailsId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CourseDetailsMap">
+        select
+          course_details_id, course_id, course_url, course_time, course_size, course_score, status
+        from wyxjava.course_details
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CourseDetailsMap">
+        select
+          course_details_id, course_id, course_url, course_time, course_size, course_score, status
+        from wyxjava.course_details
+        <where>
+            <if test="courseDetailsId != null">
+                and course_details_id = #{courseDetailsId}
+            </if>
+            <if test="courseId != null">
+                and course_id = #{courseId}
+            </if>
+            <if test="courseUrl != null and courseUrl != ''">
+                and course_url = #{courseUrl}
+            </if>
+            <if test="courseTime != null">
+                and course_time = #{courseTime}
+            </if>
+            <if test="courseSize != null">
+                and course_size = #{courseSize}
+            </if>
+            <if test="courseScore != null">
+                and course_score = #{courseScore}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="courseDetailsId" useGeneratedKeys="true">
+        insert into wyxjava.course_details(course_id, course_url, course_time, course_size, course_score, status)
+        values (#{courseId}, #{courseUrl}, #{courseTime}, #{courseSize}, #{courseScore}, #{status})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wyxjava.course_details
+        <set>
+            <if test="courseId != null">
+                course_id = #{courseId},
+            </if>
+            <if test="courseUrl != null and courseUrl != ''">
+                course_url = #{courseUrl},
+            </if>
+            <if test="courseTime != null">
+                course_time = #{courseTime},
+            </if>
+            <if test="courseSize != null">
+                course_size = #{courseSize},
+            </if>
+            <if test="courseScore != null">
+                course_score = #{courseScore},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where course_details_id = #{courseDetailsId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wyxjava.course_details where course_details_id = #{courseDetailsId}
+    </delete>
+
+</mapper>

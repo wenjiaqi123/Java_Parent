@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="wyxjava" uuid="9d08a6e3-5ba3-4342-9f31-fba7208fa1ed">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://cdb-jwd16kdk.bj.tencentcdb.com:10069/wyxjava?useSSL=false&amp;allowMultiQueries=true&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=UTF-8</jdbc-url>
+    </data-source>
+  </component>
+</project>

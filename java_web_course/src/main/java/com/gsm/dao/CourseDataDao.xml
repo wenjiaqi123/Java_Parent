@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.CourseDataDao">
+
+    <select id="selectCourseDataListByCourseId" parameterType="Long" resultType="CourseData">
+        select t.course_data_id,
+               t.course_id,
+               t.data_name,
+               t.data_url,
+               t.show_order,
+               t.status
+        from course_data t
+        where t.status = 1
+          and t.course_id = #{courseId}
+    </select>
+</mapper>
