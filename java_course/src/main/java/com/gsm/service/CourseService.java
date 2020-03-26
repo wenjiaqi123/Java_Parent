@@ -22,4 +22,6 @@ public interface CourseService {
     Result insertCourse(Course course);
 
     Result updateCourseAndDetailsAndData(Course course);
+
+    Result updateStatus(Long courseId, Integer status);
 }

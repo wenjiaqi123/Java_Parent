@@ -4,83 +4,74 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsm.dao.CourseDao">
 
-    <resultMap type="com.gsm.entity.Course" id="CourseMap">
-        <result property="courseId" column="course_id" jdbcType="INTEGER"/>
-        <result property="courseName" column="course_name" jdbcType="VARCHAR"/>
-        <result property="subjectId" column="subject_id" jdbcType="INTEGER"/>
-        <result property="showOrder" column="show_order" jdbcType="INTEGER"/>
-        <result property="status" column="status" jdbcType="INTEGER"/>
+    <resultMap id="selectCourseListBySubjectIdMap" type="Course">
+        <id property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
+        <result property="subjectId" column="subject_id"/>
+        <result property="showOrder" column="show_order"/>
+        <result property="status" column="courseStatus"/>
+
+        <association property="courseDetails" javaType="com.gsm.entity.CourseDetails">
+            <id property="courseDetailsId" column="course_details_id"/>
+            <result property="courseId" column="course_id"/>
+            <result property="courseUrl" column="course_url"/>
+            <result property="courseTime" column="course_time"/>
+            <result property="courseSize" column="course_size"/>
+            <result property="courseScore" column="course_score"/>
+            <result property="status" column="courseDetailsStatus"/>
+        </association>
     </resultMap>
+    <!--根据课程id获取列表-->
+   <select id="selectCourseListBySubjectId" parameterType="Long" resultMap="selectCourseListBySubjectIdMap">
+       select t.course_id,
+               t.course_name,
+               t.subject_id,
+               t.show_order,
+               t.status as courseStatus,
+               t1.course_details_id,
+               t1.course_id,
+               t1.course_url,
+               t1.course_time,
+               t1.course_size,
+               t1.course_score,
+               t1.status as courseDetailsStatus
+        from course t
+                 left join course_details t1 on t.course_id = t1.course_id
+        where t.status = 1 and t.subject_id = #{subjectId}
+   </select>
 
-    <!--查询单个-->
-    <select id="queryById" resultMap="CourseMap">
-        select
-          course_id, course_name, subject_id, show_order, status
-        from wyxjava.course
-        where course_id = #{courseId}
+    <resultMap id="selectCourseAndDetailsMap" type="Course">
+        <id property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
+        <result property="subjectId" column="subject_id"/>
+        <result property="showOrder" column="show_order"/>
+        <result property="status" column="courseStatus"/>
+
+        <association property="courseDetails" javaType="com.gsm.entity.CourseDetails">
+            <id property="courseDetailsId" column="course_details_id"/>
+            <result property="courseId" column="course_id"/>
+            <result property="courseUrl" column="course_url"/>
+            <result property="courseTime" column="course_time"/>
+            <result property="courseSize" column="course_size"/>
+            <result property="courseScore" column="course_score"/>
+            <result property="status" column="courseDetailsStatus"/>
+        </association>
+    </resultMap>
+    <select id="selectCourseAndDetails" parameterType="Long" resultMap="selectCourseAndDetailsMap">
+        select t.course_id,
+               t.course_name,
+               t.subject_id,
+               t.show_order,
+               t.status as courseStatus,
+               t1.course_details_id,
+               t1.course_id,
+               t1.course_url,
+               t1.course_time,
+               t1.course_size,
+               t1.course_score,
+               t1.status as courseDetailsStatus
+        from course t
+                 left join course_details t1 on t.course_id = t1.course_id
+        where t.status = 1 and t.course_id = #{courseId}
     </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="CourseMap">
-        select
-          course_id, course_name, subject_id, show_order, status
-        from wyxjava.course
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="CourseMap">
-        select
-          course_id, course_name, subject_id, show_order, status
-        from wyxjava.course
-        <where>
-            <if test="courseId != null">
-                and course_id = #{courseId}
-            </if>
-            <if test="courseName != null and courseName != ''">
-                and course_name = #{courseName}
-            </if>
-            <if test="subjectId != null">
-                and subject_id = #{subjectId}
-            </if>
-            <if test="showOrder != null">
-                and show_order = #{showOrder}
-            </if>
-            <if test="status != null">
-                and status = #{status}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="courseId" useGeneratedKeys="true">
-        insert into wyxjava.course(course_name, subject_id, show_order, status)
-        values (#{courseName}, #{subjectId}, #{showOrder}, #{status})
-    </insert>
-
-    <!--通过主键修改数据-->
-    <update id="update">
-        update wyxjava.course
-        <set>
-            <if test="courseName != null and courseName != ''">
-                course_name = #{courseName},
-            </if>
-            <if test="subjectId != null">
-                subject_id = #{subjectId},
-            </if>
-            <if test="showOrder != null">
-                show_order = #{showOrder},
-            </if>
-            <if test="status != null">
-                status = #{status},
-            </if>
-        </set>
-        where course_id = #{courseId}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from wyxjava.course where course_id = #{courseId}
-    </delete>
-
 </mapper>

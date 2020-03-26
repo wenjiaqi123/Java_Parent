@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 课程(Course)实体类
  *
@@ -31,10 +33,12 @@ public class Course{
     /**
     * 排序顺序
     */
-    private Integer showOrder;
+    private int showOrder;
     /**
     * 1在用  0失效
     */
     private Integer status;
 
+    private CourseDetails courseDetails;
+    private List<CourseData> courseDataList;
 }

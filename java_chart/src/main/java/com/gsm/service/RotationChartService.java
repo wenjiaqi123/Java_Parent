@@ -12,43 +12,13 @@ import java.util.List;
  */
 public interface RotationChartService {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    RotationChart queryById(Integer id);
+    Result selectCharts(RotationChart chart);
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<RotationChart> queryAllByLimit(int offset, int limit);
+    Result insertChart(RotationChart chart);
 
-    /**
-     * 新增数据
-     *
-     * @param rotationChart 实例对象
-     * @return 实例对象
-     */
-    RotationChart insert(RotationChart rotationChart);
+    Result updateChartStatus(Long chartId, Integer status);
 
-    /**
-     * 修改数据
-     *
-     * @param rotationChart 实例对象
-     * @return 实例对象
-     */
-    RotationChart update(RotationChart rotationChart);
+    Result updateChart(RotationChart chart);
 
-    /**
-     * 通过主键删除数据
-     */
-    Result deleteById(Long chartId);
-
-    Result selectCharts(Integer page, Integer rows, RotationChart chart);
+    Result deleteByChartId(Long chartId);
 }

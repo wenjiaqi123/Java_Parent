@@ -37,7 +37,7 @@ public class Course{
     /**
     * 1在用  0失效
     */
-    private Integer status;
+    private int status;
 
     private CourseDetails courseDetails;
     private List<CourseData> courseDataList;

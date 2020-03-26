@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * 科目(Subject)实体类
  *
@@ -31,4 +33,5 @@ public class Subject{
 
     private SubjectDetails subjectDetails;
 
+    private List<Course> courseList;
 }

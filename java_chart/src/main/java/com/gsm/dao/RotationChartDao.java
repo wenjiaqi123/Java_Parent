@@ -12,49 +12,13 @@ import java.util.List;
  */
 public interface RotationChartDao {
 
-    /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
-     */
-    RotationChart queryById(Integer id);
+    int insertChart(RotationChart chart);
 
-    /**
-     * 查询指定行数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<RotationChart> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    int deleteByChartId(Long chartId);
 
+    int updateChartStatus(RotationChart chart);
 
-    /**
-     * 通过实体作为筛选条件查询
-     *
-     * @param rotationChart 实例对象
-     * @return 对象列表
-     */
-    List<RotationChart> queryAll(RotationChart rotationChart);
-
-    /**
-     * 新增数据
-     *
-     * @param rotationChart 实例对象
-     * @return 影响行数
-     */
-    int insert(RotationChart rotationChart);
-
-    /**
-     * 修改数据
-     *
-     * @param rotationChart 实例对象
-     * @return 影响行数
-     */
-    int update(RotationChart rotationChart);
+    int updateChart(RotationChart chart);
 
     List<RotationChart> selectCharts(RotationChart chart);
-
-    void deleteById(Long chartId);
 }

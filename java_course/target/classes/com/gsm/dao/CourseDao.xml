@@ -91,15 +91,11 @@
 
     <insert id="insertCourse" parameterType="Course">
         insert into course
-        (course_id,
-         course_name,
-         subject_id,
-         show_order)
-        values
-        (#{courseId},
-         #{courseName},
-         #{subjectId},
-         #{showOrder})
+        (course_id, course_name, subject_id, show_order)
+        select #{courseId},#{courseName},#{subjectId},max(show_order) + 1
+        from course t
+        where t.subject_id = #{subjectId}
+        order by t.show_order
     </insert>
 
     <select id="selectCourseByCourseId" parameterType="Long" resultType="Course">
@@ -115,6 +111,12 @@
     <update id="updateCourseByCourseId" parameterType="Course">
         update course
         set course_name = #{courseName}
+        where course_id = #{courseId}
+    </update>
+
+    <update id="updateSubject" parameterType="Course">
+        update course
+        set status = #{status}
         where course_id = #{courseId}
     </update>
 </mapper>

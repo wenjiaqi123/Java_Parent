@@ -1,6 +1,6 @@
 package com.gsm.controller;
 
-import com.gsm.entity.Course;
+import com.gsm.entity.Result;
 import com.gsm.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,20 +12,15 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-03-25 21:20:02
  */
 @RestController
-@RequestMapping("course")
+@RequestMapping("webCourse")
 public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Course selectOne(Long id) {
-        return this.courseService.queryById(id);
+    //根据id查询课时信息，详细，资料
+    @GetMapping("course/{courseId}")
+    public Result selectCourseAndDetailsAndData(@PathVariable("courseId")Long courseId) {
+        Result result = courseService.selectCourseAndDetailsAndData(courseId);
+        return result;
     }
-
 }

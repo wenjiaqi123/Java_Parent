@@ -63,7 +63,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Result insertCourse(Course course) {
-        //课程id
+        //课时id
         Long courseId = idUtils.nextId();
         course.setCourseId(courseId);
         //插入课时
@@ -105,6 +105,16 @@ public class CourseServiceImpl implements CourseService {
         if (courseDataList.size() > 0) {
             courseDataDao.insertCourseDataList(courseDataList);
         }
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result updateStatus(Long courseId, Integer status) {
+        Course course = new Course();
+        course.setCourseId(courseId);
+        course.setStatus(status);
+        courseDao.updateSubject(course);
         Result result = new Result(true, StatusCode.OK);
         return result;
     }

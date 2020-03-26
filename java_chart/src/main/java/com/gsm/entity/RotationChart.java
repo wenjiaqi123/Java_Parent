@@ -31,6 +31,6 @@ public class RotationChart{
     /**
     * 状态  1有效  0无效
     */
-    private Integer status;
+    private int status;
 
 }

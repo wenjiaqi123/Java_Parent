@@ -14,4 +14,5 @@ public interface SubjectService {
 
     Result selectSubjects();
 
+    Result selectSubjectAndDetailsAndCourseList(Long subjectId);
 }

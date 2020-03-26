@@ -26,4 +26,11 @@ public class SubjectController {
         return result;
     }
 
+    //根据id查询课程详细信息列表
+    @GetMapping("subjectInfo/{subjectId}")
+    public Result selectSubjectAndDetailsAndCourseList(@PathVariable("subjectId")Long subjectId) {
+        Result result = subjectService.selectSubjectAndDetailsAndCourseList(subjectId);
+        return result;
+    }
+
 }

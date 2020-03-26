@@ -14,4 +14,5 @@ public interface SubjectDao {
 
     List<Subject> selectSubjects();
 
+    Subject selectSubjectAndDetails(Long subjectId);
 }

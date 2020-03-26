@@ -23,4 +23,6 @@ public interface CourseDao {
     Course selectCourseByCourseId(Long courseId);
 
     int updateCourseByCourseId(Course course);
+
+    int updateSubject(Course course);
 }

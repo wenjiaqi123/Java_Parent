@@ -40,6 +40,13 @@ public class CourseController {
         return result;
     }
 
+    //根据id修改课时在用状态
+    @PutMapping("course/{courseId}/{status}")
+    public Result updateStatus(@PathVariable("courseId")Long courseId,@PathVariable("status")Integer status) {
+        Result result = courseService.updateStatus(courseId,status);
+        return result;
+    }
+
     //添加课时和详细和资料
     @PostMapping("/course")
     public Result insertCourse(@RequestBody Course course) {
