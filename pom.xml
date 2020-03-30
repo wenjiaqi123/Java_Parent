@@ -172,6 +172,52 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
+                <!--docker镜像配套Maven插件-->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>1.0.0</version>
+                    <!--将插件绑定到某个Maven阶段执行-->
+                    <executions>
+                        <execution>
+                            <id>build-image</id>
+                            <!--这里是绑定到Maven的package阶段执行，当我们执行package命令，同时也会执行 mvn docker:build-->
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+
+                    <configuration>
+                        <!--指定生成的镜像名-->
+                        <imageName>zdadmin/${project.artifactId}</imageName>
+                        <!--指定镜像版本，默认latest-->
+                        <imageTags>
+                            <imageTag>latest</imageTag>
+                        </imageTags>
+
+                        <!--指定项目中 DockerFile文件的路径 -->
+                        <dockerDirectory>${project.basedir}</dockerDirectory>
+
+                        <!--指定远程Docker地址-->
+                        <!--<dockerHost>https://127.0.0.1:2376</dockerHost>-->
+                        <dockerHost>https://47.100.163.218:2376</dockerHost>
+
+                        <resources>
+                            <resource>
+                                <!--生成的jar包，war包所在的路径，配置的是对应target的目录-->
+                                <direcotry>${project.build.directory}</direcotry>
+                                <!--需要包含的jar包，对应的是 DockerFile 添加的名字-->
+                                <include>${project.build.finalName}</include>
+                            </resource>
+                        </resources>
+
+                        <!--将 docker push 到 DockerHub-->
+                        <serverId>docker-hub</serverId>
+                        <registryUrl>https://hub.docker.com/repository/docker/wenjiaqi/wyxjava</registryUrl>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
 

@@ -1,0 +1,4 @@
+From java:8
+COPY java_sys_eureka.jar  java_sys_eureka.jar
+EXPOSE 10000
+ENTRYPOINT ["java", "-jar", "java_sys_eureka.jar"]
