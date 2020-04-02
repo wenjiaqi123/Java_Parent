@@ -1,9 +1,13 @@
 package com.gsm.controller;
 
 import com.gsm.entity.Feedback;
+import com.gsm.entity.Result;
 import com.gsm.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 建议反馈表(Feedback)表控制层
@@ -12,20 +16,15 @@ import org.springframework.web.bind.annotation.*;
  * @since 2020-03-24 22:12:02
  */
 @RestController
-@RequestMapping("feedback")
+@RequestMapping("/feedback")
 public class FeedbackController {
     @Autowired
     private FeedbackService feedbackService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Feedback selectOne(Long id) {
-        return this.feedbackService.queryById(id);
+    @PostMapping("/feedback")
+    public Result insertFeedback(@RequestBody Feedback feedback){
+        Result result = feedbackService.insertFeedBack(feedback);
+        return result;
     }
 
 }

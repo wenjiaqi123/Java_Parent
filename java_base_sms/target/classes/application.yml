@@ -43,3 +43,10 @@ sms:
   smsVerify: SMS_160856798
   # 过期时间，秒
   expireTime: 300
+#####################################################################
+#消息队列
+fanoutExchange:
+  # 交换机名称
+  name: smsExchange
+queue:
+  name: smsQueue

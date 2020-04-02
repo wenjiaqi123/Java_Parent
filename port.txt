@@ -1,5 +1,5 @@
 #系统服务
-config      配置服务        9999
+com.gsm.config      配置服务        9999
 eureka      注册中心        10000
 
 #网关

@@ -1,7 +1,7 @@
 package com.gsm.dao;
 
 import com.gsm.entity.Course;
-import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -25,4 +25,6 @@ public interface CourseDao {
     int updateCourseByCourseId(Course course);
 
     int updateSubject(Course course);
+
+    Course selectCourseBySubjectId(Long subjectId);
 }

@@ -89,13 +89,28 @@
         where course_id = #{courseId}
     </delete>
 
-    <insert id="insertCourse" parameterType="Course">
-        insert into course
-        (course_id, course_name, subject_id, show_order)
-        select #{courseId},#{courseName},#{subjectId},max(show_order) + 1
+    <select id="selectCourseBySubjectId" parameterType="Long" resultType="Course">
+        select t.course_id,
+               t.course_name,
+               t.subject_id,
+               t.show_order,
+               t.status
         from course t
         where t.subject_id = #{subjectId}
-        order by t.show_order
+        order by show_order
+        limit 1
+    </select>
+    <insert id="insertCourse" parameterType="Course">
+        insert into course
+        (course_id,
+        course_name,
+        subject_id,
+        show_order)
+        values
+        (#{courseId},
+        #{courseName},
+        #{subjectId},
+        #{showOrder})
     </insert>
 
     <select id="selectCourseByCourseId" parameterType="Long" resultType="Course">

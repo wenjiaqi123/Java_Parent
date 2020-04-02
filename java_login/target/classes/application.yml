@@ -4,6 +4,13 @@ server:
   # 该项目启动的端口号
   port: 10100
 #####################################################################
+# jwt 加密
+jwt:
+  # 盐值
+  saltKey:  wyxjava
+  #过期时间 7*24*60*60*1000=604800 秒
+  expiration: 604800000
+#####################################################################
 spring:
   # 项目操作
   application:
@@ -26,17 +33,11 @@ spring:
     # 数据库用户密码
     password: wyxjava123
 ###########################################################################
-# mybatis 框架
 mybatis:
-  # 别名包
   type-aliases-package: com.gsm.entity
-  # mapper文件位置
   mapper-locations: classpath:com/gsm/dao/*Mapper.xml
-  # 配置
   configuration:
-    # 数据库列名 user_name 映射pojo userName 格式转换
     map-underscore-to-camel-case: true
-# log日志等级,mybatis打印sql
 logging:
   level:
     com.gsm.dao: DEBUG

@@ -13,7 +13,6 @@ public class ProducerDemo {
     public void insertRabbitmqDemoFanout() {
         System.out.println("-----fanout 发送准备-----");
         String exchange = fanoutExchange.getName();
-        fanoutExchange.getName();
         rabbitTemplate.convertAndSend(exchange,"队列名称","这里是传输的对象");
         System.out.println("-----fanout 发送结束-----");
     }

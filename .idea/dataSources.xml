@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="wyxjava" uuid="9d08a6e3-5ba3-4342-9f31-fba7208fa1ed">
+    <data-source source="LOCAL" name="wyxjava" uuid="e02dbf25-76f7-458d-b8a1-1f8ad326178f">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

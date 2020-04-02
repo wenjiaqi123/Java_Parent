@@ -12,7 +12,7 @@
     <artifactId>java_sys_config</artifactId>
 
     <dependencies>
-        <!-- config 配置服务端-->
+        <!-- com.gsm.config 配置服务端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>

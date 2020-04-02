@@ -8,7 +8,7 @@ spring:
   # 项目操作
   application:
     # 项目名，使用中划线
-    name: java-sys-config
+    name: java-sys-com.gsm.config
   # 获取配置信息
   cloud:
     config:

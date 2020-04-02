@@ -1,12 +1,10 @@
 package com.gsm.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.gsm.dao.CourseDao;
 import com.gsm.dao.CourseDataDao;
 import com.gsm.dao.CourseDetailsDao;
 import com.gsm.dao.SubjectDetailsDao;
 import com.gsm.entity.*;
-import com.gsm.dao.CourseDao;
 import com.gsm.service.CourseService;
 import com.gsm.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +64,12 @@ public class CourseServiceImpl implements CourseService {
         //课时id
         Long courseId = idUtils.nextId();
         course.setCourseId(courseId);
+        Course tempCourse = courseDao.selectCourseBySubjectId(course.getSubjectId());
+        if (tempCourse == null) {
+            course.setShowOrder(0);
+        } else {
+            course.setShowOrder(tempCourse.getShowOrder() + 1);
+        }
         //插入课时
         courseDao.insertCourse(course);
         CourseDetails courseDetails = course.getCourseDetails();
