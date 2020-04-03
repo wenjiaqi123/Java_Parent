@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQBaseConfig {
-
     /**
      * 传输序列化对象
      * @return

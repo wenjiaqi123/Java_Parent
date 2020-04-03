@@ -49,3 +49,9 @@ eureka:
       defaultZone: http://127.0.0.1:10000/eureka/
   instance:
     prefer-ip-address: true
+###########################################################################
+# 熔断器 配置
+feign:
+  hystrix:
+    # 开启熔断器
+    enabled: true

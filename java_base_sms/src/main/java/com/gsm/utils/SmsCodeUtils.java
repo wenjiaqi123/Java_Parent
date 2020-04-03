@@ -30,15 +30,8 @@ public class SmsCodeUtils {
     @Value("${sms.signName}")
     private String signName;
 
-    //阿里云 模板
-    @Value("${sms.iphoneRegister}")
-    private String iphoneRegister;
 
-    //阿里云 模板
-    @Value("${sms.smsVerify}")
-    private String smsVerify;
-
-    private boolean sendSmsCode(SmsCode smsCode){
+    private boolean sendSmsCode(String template,SmsCode smsCode) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
         IAcsClient client = new DefaultAcsClient(profile);
 
@@ -49,7 +42,7 @@ public class SmsCodeUtils {
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("SignName", signName);
-        request.putQueryParameter("TemplateCode", iphoneRegister);
+        request.putQueryParameter("TemplateCode", template);
         request.putQueryParameter("PhoneNumbers", smsCode.getIphoneNo());
         request.putQueryParameter("TemplateParam", smsCode.getJson());
         try {
@@ -69,10 +62,10 @@ public class SmsCodeUtils {
      *
      * @param smsCode
      */
-    public boolean sendSmsCodeOneIphoneNo(SmsCode smsCode) {
+    public boolean sendSmsCodeOneIphoneNo(String template,SmsCode smsCode) {
         String jsonTemplate = "{\"code\":" + smsCode.getSmsCode() + "}";
         smsCode.setJson(jsonTemplate);
-        boolean bool = sendSmsCode(smsCode);
+        boolean bool = sendSmsCode(template,smsCode);
         return bool;
     }
 }

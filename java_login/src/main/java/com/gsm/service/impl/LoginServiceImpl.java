@@ -20,6 +20,10 @@ public class LoginServiceImpl implements LoginService {
     public Result selectUserCanLoginReturnInfo(LoginUser loginUser) {
         LoginUserVo userVo = new LoginUserVo();
         WebUser webUser = loginDao.selectUserPwdByAccount(loginUser.getAccount());
+        if (webUser == null) {
+            Result result = new Result(false, StatusCode.ERROR_LOGIN, "", "该用户还未注册");
+            return result;
+        }
         //前台明文，前台进行一次 Base64
         String userPwdOpen = loginUser.getUserPwdOpen();
         //前台密文再次MD5加密
@@ -44,6 +48,24 @@ public class LoginServiceImpl implements LoginService {
     public Result selectWebUserInfo(Long webUserId) {
         WebUser webUser = loginDao.selectUserInfoByUserId(webUserId);
         Result result = new Result(true, StatusCode.OK, "", webUser);
+        return result;
+    }
+
+    @Override
+    public Result selectUserCanLoginByVerCodeReturnInfo(String iphoneNo) {
+        WebUser webUser = loginDao.selectUserPwdByIphoneNo(iphoneNo);
+        if (webUser == null) {
+            Result result = new Result(false, StatusCode.ERROR_LOGIN, "", "该用户还未注册");
+            return result;
+        }
+        LoginUserVo userVo = new LoginUserVo();
+        String token = jwtUtils.getJwt(Long.toString(webUser.getWebUserId()), webUser.getUserName(), "", "");
+        userVo.setToken(token);
+
+        webUser.setUserPwdOpen("");
+        webUser.setUserPwdClose("");
+        userVo.setWebUser(webUser);
+        Result result = new Result(true, StatusCode.OK, "", userVo);
         return result;
     }
 }

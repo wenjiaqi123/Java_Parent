@@ -32,21 +32,38 @@ eureka:
 # 短信配置
 sms:
   # 阿里云短信 AccessKeyId
-  accessKeyId: LTAI4Fss1dL4Kx4NZNuLe6nE
+  accessKeyId: LTAI4Fcbte7yXVfLtkcgU2BV
   # 阿里云短信 AccessKeySecret
-  accessKeySecret: 7vowAa7kOnpoiY4C2D5wkQzSStFK48
+  accessKeySecret: D5MbMuki8kvt5Ap3KEoCDn2EqigX66
   # 阿里云短信 SignName
   signName: 我要学Java
-  # 模板  您正在申请手机注册，验证码为：${code}！
-  iphoneRegister: SMS_166475575
-  # 模板  您的验证码：${code}，您正进行身份验证，打死不告诉别人！
-  smsVerify: SMS_160856798
-  # 过期时间，秒
-  expireTime: 300
 #####################################################################
-#消息队列
-fanoutExchange:
-  # 交换机名称
-  name: smsExchange
-queue:
-  name: smsQueue
+# 注册模块
+reg:
+  # 短信
+  sms:
+    # 模板  您正在申请手机注册，验证码为：${code}！
+    template: SMS_166475575
+    # 过期时间，秒
+    expireTime: 300
+  #消息队列
+  mq:
+    fanout:
+      name: regFanout
+    queue:
+      name: regQueue
+#####################################################################
+# 校验模块
+check:
+  # 短信
+  sms:
+    # 模板  您的验证码：${code}，您正进行身份验证，打死不告诉别人！
+    template: SMS_160856798
+    # 过期时间，秒
+    expireTime: 300
+  #消息队列
+  mq:
+    fanout:
+      name: checkFanout
+    queue:
+      name: checkQueue

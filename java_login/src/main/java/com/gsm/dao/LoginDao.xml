@@ -16,6 +16,18 @@
         where t.iphone_no = #{account} or t.user_email = #{account}
     </select>
 
+    <select id="selectUserPwdByIphoneNo" parameterType="String" resultType="WebUser">
+        select t.web_user_id,
+               t.user_name,
+               t.user_pwd_open,
+               t.user_pwd_close,
+               t.iphone_no,
+               t.user_email,
+               t.head_portrait
+        from web_user t
+        where t.iphone_no = #{iphoneNo}
+    </select>
+
     <select id="selectUserInfoByUserId" parameterType="Long" resultType="WebUser">
         select t.web_user_id,
                t.user_name,

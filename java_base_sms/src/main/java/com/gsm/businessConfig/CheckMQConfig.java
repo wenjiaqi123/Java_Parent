@@ -1,4 +1,4 @@
-package com.gsm.config;
+package com.gsm.businessConfig;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -12,27 +12,27 @@ import org.springframework.context.annotation.Configuration;
  * 绑定交换机和消息队列
  */
 @Configuration
-public class RabbitMQConfigQueue {
-    @Value("${fanoutExchange.name}")
+public class CheckMQConfig {
+    //交换机名称
+    @Value("${check.mq.fanout.name}")
     private String fanoutName;
-
-    @Value("${queue.name}")
+    //队列名称
+    @Value("${check.mq.queue.name}")
     private String queueName;
 
     @Bean
-    public FanoutExchange fanoutExchange(){
+    public FanoutExchange checkFanoutExchange(){
         return new FanoutExchange(fanoutName);
     }
 
     @Bean
-    public Queue queue(){
+    public Queue checkQueue(){
         return new Queue(queueName);
     }
 
-
     @Bean
-    public Binding binding(FanoutExchange fanoutExchange, Queue queue){
-        Binding binding = BindingBuilder.bind(queue).to(fanoutExchange);
+    public Binding checkBinding(FanoutExchange checkFanoutExchange, Queue checkQueue){
+        Binding binding = BindingBuilder.bind(checkQueue).to(checkFanoutExchange);
         return binding;
     }
 }

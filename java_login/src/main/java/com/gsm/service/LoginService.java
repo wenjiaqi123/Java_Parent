@@ -7,4 +7,6 @@ public interface LoginService {
     Result selectUserCanLoginReturnInfo(LoginUser loginUser);
 
     Result selectWebUserInfo(Long webUserId);
+
+    Result selectUserCanLoginByVerCodeReturnInfo(String iphoneNo);
 }

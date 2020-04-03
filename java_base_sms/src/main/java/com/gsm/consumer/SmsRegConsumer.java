@@ -12,29 +12,32 @@ import org.springframework.stereotype.Component;
 
 @Component
 // 填写队列名称
-@RabbitListener(queues = "smsQueue")
-public class SmsConsumer {
+@RabbitListener(queues = "regQueue")
+public class SmsRegConsumer {
     @Autowired
     private SmsCodeUtils smsCodeUtils;
     @Autowired
     private RedisUtils redisUtils;
 
     //过期时间
-    @Value("${sms.expireTime}")
+    @Value("${reg.sms.template}")
+    private String template;
+    //过期时间
+    @Value("${reg.sms.expireTime}")
     private Integer expireTime;
 
     @RabbitHandler
-    public void sendIphoneNo(String iphoneNo){
+    public void sendIphoneNo(String iphoneNo) {
         System.out.println("准备向手机号\t" + iphoneNo + "\t发送短信");
 
         //生成四位验证码
         Integer random4 = RandomNumUtils.getRandom4();
         //发送短信
-        boolean b = smsCodeUtils.sendSmsCodeOneIphoneNo(new SmsCode(iphoneNo, random4));
-        if(b){
+        boolean b = smsCodeUtils.sendSmsCodeOneIphoneNo(template,new SmsCode(iphoneNo, random4));
+        if (b) {
             //存入redis
             String key = "sms_" + iphoneNo + "_" + random4;
-            redisUtils.set(key,random4,expireTime);
+            redisUtils.set(key, random4, expireTime);
         }
     }
 }

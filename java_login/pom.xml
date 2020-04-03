@@ -19,6 +19,12 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!--该模块要调用其他模块，导入 feign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!--mysql 数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>
