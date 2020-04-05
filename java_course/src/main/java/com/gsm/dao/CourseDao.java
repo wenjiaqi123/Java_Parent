@@ -27,4 +27,6 @@ public interface CourseDao {
     int updateSubject(Course course);
 
     Course selectCourseBySubjectId(Long subjectId);
+
+    int updateCourseShowOrder(List<Course> list);
 }

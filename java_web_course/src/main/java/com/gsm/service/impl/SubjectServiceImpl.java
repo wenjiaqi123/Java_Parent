@@ -1,10 +1,11 @@
 package com.gsm.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.gsm.dao.CourseDao;
-import com.gsm.entity.*;
 import com.gsm.dao.SubjectDao;
+import com.gsm.entity.Course;
+import com.gsm.entity.Result;
+import com.gsm.entity.StatusCode;
+import com.gsm.entity.Subject;
 import com.gsm.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

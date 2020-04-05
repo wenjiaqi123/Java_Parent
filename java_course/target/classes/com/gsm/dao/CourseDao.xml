@@ -97,7 +97,7 @@
                t.status
         from course t
         where t.subject_id = #{subjectId}
-        order by show_order
+        order by show_order desc
         limit 1
     </select>
     <insert id="insertCourse" parameterType="Course">
@@ -133,5 +133,13 @@
         update course
         set status = #{status}
         where course_id = #{courseId}
+    </update>
+
+    <update id="updateCourseShowOrder" parameterType="Course">
+        <foreach collection="list" item="i" separator=";">
+            update course
+            set show_order = #{i.showOrder}
+            where course_id = #{i.courseId}
+        </foreach>
     </update>
 </mapper>

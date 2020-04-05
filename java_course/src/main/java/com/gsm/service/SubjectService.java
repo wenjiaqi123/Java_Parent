@@ -3,6 +3,8 @@ package com.gsm.service;
 import com.gsm.entity.Result;
 import com.gsm.entity.Subject;
 
+import java.util.List;
+
 /**
  * 科目(Subject)表服务接口
  *
@@ -22,4 +24,6 @@ public interface SubjectService {
     Result updateStatus(Long subjectId, Integer status);
 
     Result updateSubjectAndDetails(Subject subject);
+
+    Result updateSubjectShowOrder(List<Subject> list);
 }

@@ -1,7 +1,7 @@
 package com.gsm.dao;
 
 import com.gsm.entity.Subject;
-import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -20,4 +20,8 @@ public interface SubjectDao {
     int updateSubject(Subject subject);
 
     int insertSubject(Subject subject);
+
+    Subject selectSubjectShowOrderMax();
+
+    int updateSubjectShowOrder(List<Subject> list);
 }

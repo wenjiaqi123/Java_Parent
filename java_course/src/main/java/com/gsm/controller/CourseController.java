@@ -6,6 +6,8 @@ import com.gsm.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 课程(Course)表控制层
  *
@@ -58,6 +60,13 @@ public class CourseController {
     @DeleteMapping("/course/{courseId}")
     public Result deleteCourseById(@PathVariable("courseId")Long courseId) {
         Result result = courseService.deleteCourseById(courseId);
+        return result;
+    }
+
+    //课程排序
+    @PutMapping("/showOrder")
+    public Result updateCourseShowOrder(@RequestBody List<Course> list) {
+        Result result = courseService.updateCourseShowOrder(list);
         return result;
     }
 }

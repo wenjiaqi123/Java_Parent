@@ -27,6 +27,10 @@ public class Subject{
     */
     private String subjectName;
     /**
+     * 排序顺序
+     */
+    private Integer showOrder;
+    /**
     * 状态  1在用  0失效
     */
     private Integer status;

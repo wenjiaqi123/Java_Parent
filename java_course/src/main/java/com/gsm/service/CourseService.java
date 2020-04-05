@@ -24,4 +24,6 @@ public interface CourseService {
     Result updateCourseAndDetailsAndData(Course course);
 
     Result updateStatus(Long courseId, Integer status);
+
+    Result updateCourseShowOrder(List<Course> list);
 }

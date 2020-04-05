@@ -122,4 +122,11 @@ public class CourseServiceImpl implements CourseService {
         Result result = new Result(true, StatusCode.OK);
         return result;
     }
+
+    @Override
+    public Result updateCourseShowOrder(List<Course> list) {
+        courseDao.updateCourseShowOrder(list);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
 }

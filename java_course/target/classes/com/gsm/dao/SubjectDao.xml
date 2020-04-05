@@ -7,6 +7,7 @@
     <resultMap id="selectSubjectsMap" type="Subject">
         <id property="subjectId" column="subject_id"/>
         <result property="subjectName" column="subject_name"/>
+        <result property="showOrder" column="show_order"/>
         <result property="status" column="subjectStatus"/>
 
         <association property="subjectDetails" javaType="com.gsm.entity.SubjectDetails">
@@ -25,6 +26,7 @@
     <select id="selectSubjects" parameterType="Subject" resultMap="selectSubjectsMap">
         select t.subject_id,
                 t.subject_name,
+                t.show_order,
                 t.status as subjectStatus,
                 t1.subject_details_id,
                 t1.subject_id,
@@ -54,11 +56,21 @@
     <select id="selectSubjectBySubjectId" parameterType="Long" resultType="Subject">
         select t.subject_id,
                t.subject_name,
+               t.show_order,
                t.status
         from subject t
         where t.subject_id = #{subjectId}
     </select>
 
+    <select id="selectSubjectShowOrderMax" resultType="Subject">
+        select t.subject_id,
+               t.subject_name,
+               t.show_order,
+               t.status
+        from subject t
+        order by t.show_order desc
+        limit 1
+    </select>
 
     <delete id="deleteSubjectById" parameterType="Long">
         delete from subject
@@ -87,4 +99,12 @@
         (#{subjectId},
         #{subjectName})
     </insert>
+
+    <update id="updateSubjectShowOrder" parameterType="Subject">
+        <foreach collection="list" item="i" separator=";">
+            update subject
+            set show_order = #{i.showOrder}
+            where subject_id = #{i.subjectId}
+        </foreach>
+    </update>
 </mapper>

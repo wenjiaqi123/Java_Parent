@@ -49,6 +49,13 @@ public class SubjectServiceImpl implements SubjectService {
     public Result insertSubjectAndDetails(Subject subject) {
         Long subjectId = idUtils.nextId();
         subject.setSubjectId(subjectId);
+        Subject tmpSubject = subjectDao.selectSubjectShowOrderMax();
+
+        if (tmpSubject == null) {
+            subject.setShowOrder(0);
+        } else {
+            subject.setShowOrder(tmpSubject.getShowOrder() + 1);
+        }
         //插入课程
         subjectDao.insertSubject(subject);
         SubjectDetails subjectDetails = subject.getSubjectDetails();
@@ -89,6 +96,13 @@ public class SubjectServiceImpl implements SubjectService {
         subjectDetails.setSubjectId(subject.getSubjectId());
         //更新课程详细信息
         subjectDetailsDao.updateSubjectDetails(subjectDetails);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result updateSubjectShowOrder(List<Subject> list) {
+        subjectDao.updateSubjectShowOrder(list);
         Result result = new Result(true, StatusCode.OK);
         return result;
     }

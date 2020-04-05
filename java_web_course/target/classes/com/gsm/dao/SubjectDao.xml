@@ -7,6 +7,7 @@
     <resultMap id="selectSubjectsMap" type="Subject">
         <id property="subjectId" column="subject_id"/>
         <result property="subjectName" column="subject_name"/>
+        <result property="showOrder" column="show_order"/>
         <result property="status" column="subjectStatus"/>
 
         <association property="subjectDetails" javaType="com.gsm.entity.SubjectDetails">
@@ -25,6 +26,7 @@
     <select id="selectSubjects" resultMap="selectSubjectsMap">
         select t.subject_id,
                 t.subject_name,
+                t.show_order,
                 t.status as subjectStatus,
                 t1.subject_details_id,
                 t1.subject_id,
@@ -38,12 +40,13 @@
         from subject t
         left join subject_details t1 on t.subject_id = t1.subject_id
         where t.status = 1
-        order by t.subject_id asc
+        order by t.show_order asc
     </select>
 
     <resultMap id="selectSubjectAndDetailsMap" type="Subject">
         <id property="subjectId" column="subject_id"/>
         <result property="subjectName" column="subject_name"/>
+        <result property="showOrder" column="show_order"/>
         <result property="status" column="subjectStatus"/>
 
         <association property="subjectDetails" javaType="com.gsm.entity.SubjectDetails">
@@ -62,6 +65,7 @@
     <select id="selectSubjectAndDetails" resultMap="selectSubjectAndDetailsMap">
         select t.subject_id,
                 t.subject_name,
+                t.show_order,
                 t.status as subjectStatus,
                 t1.subject_details_id,
                 t1.subject_id,
@@ -75,5 +79,6 @@
         from subject t
         left join subject_details t1 on t.subject_id = t1.subject_id
         where t.status = 1 and t.subject_id = #{subjectId}
+        order by t.show_order asc
     </select>
 </mapper>
