@@ -78,10 +78,12 @@ public class ManagerFilter extends ZuulFilter {
         //得到request域
         HttpServletRequest request = currentContext.getRequest();
 
-        if(request.getMethod().equals("OPTIONS")){
+        //放行预检请求
+        if (request.getMethod().equals("OPTIONS")) {
             return null;
         }
-        if(request.getRequestURI().indexOf("login")>0){
+        //放行登录，文件
+        if (request.getRequestURI().indexOf("login") > 0 || request.getRequestURI().indexOf("file") > 0) {
             return null;
         }
 
@@ -96,7 +98,7 @@ public class ManagerFilter extends ZuulFilter {
                 //获取过期时间
                 Date expiration = claims.getExpiration();
                 //如果过期时间在当前时间之前，
-                if(expiration.before(new Date())){
+                if (expiration.before(new Date())) {
                     //终止运行
                     currentContext.setSendZuulResponse(false);
                 }

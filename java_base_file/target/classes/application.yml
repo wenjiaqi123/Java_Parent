@@ -15,14 +15,12 @@ spring:
     multipart:
       #启用 http上传处理
       enabled: true
-      #最大上传大小1G【默认1M】
-      max-file-size: 1024MB
-      max-request-size: 2048MB
+      #最大上传大小1G【默认1M】 -1不限制大小
+      max-file-size: -1
+      max-request-size: -1
   rabbitmq:
     host: 106.15.238.19
     port: 5672
-fanoutExchange:
-  name: fileExchange
 #####################################################################
 eureka:
   client:

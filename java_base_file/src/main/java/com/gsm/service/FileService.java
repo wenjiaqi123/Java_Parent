@@ -1,7 +1,8 @@
 package com.gsm.service;
 
+import com.gsm.entity.Result;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
-    String insertFile(MultipartFile file);
+    Result insertFile(MultipartFile file);
 }

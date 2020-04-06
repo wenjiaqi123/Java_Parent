@@ -1,9 +1,11 @@
 package com.gsm;
 
 import com.github.tobato.fastdfs.FdfsClientConfig;
+import com.gsm.utils.IdUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -17,5 +19,15 @@ public class JavaBaseFileApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JavaBaseFileApplication.class);
+    }
+
+    /**
+     * 使用时将 IdUtils 引入
+     *
+     * @Autowired private IdUtils idUtils;
+     */
+    @Bean
+    public IdUtils getId() {
+        return new IdUtils(1, 1);
     }
 }

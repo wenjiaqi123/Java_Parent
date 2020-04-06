@@ -1,16 +1,10 @@
-package com.gsm;
+package com.gsm.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfigQueue {
-    @Value("${fanoutExchange.name}")
+   /* @Value("${fanoutExchange.name}")
     private String fanoutName;
 
     @Bean
@@ -39,5 +33,5 @@ public class RabbitMQConfigQueue {
     public Binding binding1(FanoutExchange fanoutExchange, Queue queueStoreQueue){
         Binding binding = BindingBuilder.bind(queueStoreQueue).to(fanoutExchange);
         return binding;
-    }
+    }*/
 }

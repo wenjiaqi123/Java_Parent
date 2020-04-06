@@ -1,18 +1,16 @@
 package com.gsm.config2;
 
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "fastDFSQueue")
+//@RabbitListener(queues = "fastDFSQueue")
 public class FastDfsConsumer {
     @Autowired
     private FastFileStorageClient fastFileStorageClient;
 
-    @RabbitHandler
+    //@RabbitHandler
     public void fanoutQueueZero(String file){
         System.out.println("我是FastDFS消费者");
         String fileUrl = "";

@@ -2,9 +2,10 @@ package com.gsm.service.impl;
 
 import com.github.tobato.fastdfs.domain.fdfs.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import com.gsm.entity.Result;
+import com.gsm.entity.StatusCode;
 import com.gsm.service.FileService;
 import org.apache.commons.io.FilenameUtils;
-import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,11 @@ public class FileServiceImpl implements FileService {
     private FastFileStorageClient fastFileStorageClient;
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    @Autowired
-    private FanoutExchange fanoutExchange;
+  /*  @Autowired
+    private FanoutExchange fanoutExchange;*/
 
     @Override
-    public String insertFile(MultipartFile file) {
+    public Result insertFile(MultipartFile file) {
         String fileUrl = "";
         try {
             StorePath storePath = fastFileStorageClient.uploadFile(file.getInputStream(), file.getSize(), FilenameUtils.getExtension(file.getOriginalFilename()), null);
@@ -30,6 +31,7 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
         System.out.println(fileUrl);
-        return fileUrl;
+        Result result = new Result(true, StatusCode.OK,"",fileUrl);
+        return result;
     }
 }
