@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gsm</groupId>
@@ -173,15 +174,15 @@
                     <version>2.8.2</version>
                 </plugin>
                 <!--docker镜像配套Maven插件-->
-                <plugin>
+                <!--<plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>1.0.0</version>
-                    <!--将插件绑定到某个Maven阶段执行-->
+                    &lt;!&ndash;将插件绑定到某个Maven阶段执行&ndash;&gt;
                     <executions>
                         <execution>
                             <id>build-image</id>
-                            <!--这里是绑定到Maven的package阶段执行，当我们执行package命令，同时也会执行 mvn docker:build-->
+                            &lt;!&ndash;这里是绑定到Maven的package阶段执行，当我们执行package命令，同时也会执行 mvn docker:build&ndash;&gt;
                             <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
@@ -190,34 +191,34 @@
                     </executions>
 
                     <configuration>
-                        <!--指定生成的镜像名-->
+                        &lt;!&ndash;指定生成的镜像名&ndash;&gt;
                         <imageName>zdadmin/${project.artifactId}</imageName>
-                        <!--指定镜像版本，默认latest-->
+                        &lt;!&ndash;指定镜像版本，默认latest&ndash;&gt;
                         <imageTags>
                             <imageTag>latest</imageTag>
                         </imageTags>
 
-                        <!--指定项目中 DockerFile文件的路径 -->
+                        &lt;!&ndash;指定项目中 DockerFile文件的路径 &ndash;&gt;
                         <dockerDirectory>${project.basedir}</dockerDirectory>
 
-                        <!--指定远程Docker地址-->
-                        <!--<dockerHost>https://127.0.0.1:2376</dockerHost>-->
+                        &lt;!&ndash;指定远程Docker地址&ndash;&gt;
+                        &lt;!&ndash;<dockerHost>https://127.0.0.1:2376</dockerHost>&ndash;&gt;
                         <dockerHost>https://47.100.163.218:2376</dockerHost>
 
                         <resources>
                             <resource>
-                                <!--生成的jar包，war包所在的路径，配置的是对应target的目录-->
+                                &lt;!&ndash;生成的jar包，war包所在的路径，配置的是对应target的目录&ndash;&gt;
                                 <direcotry>${project.build.directory}</direcotry>
-                                <!--需要包含的jar包，对应的是 DockerFile 添加的名字-->
+                                &lt;!&ndash;需要包含的jar包，对应的是 DockerFile 添加的名字&ndash;&gt;
                                 <include>${project.build.finalName}</include>
                             </resource>
                         </resources>
 
-                        <!--将 docker push 到 DockerHub-->
+                        &lt;!&ndash;将 docker push 到 DockerHub&ndash;&gt;
                         <serverId>docker-hub</serverId>
                         <registryUrl>https://hub.docker.com/repository/docker/wenjiaqi/wyxjava</registryUrl>
                     </configuration>
-                </plugin>
+                </plugin>-->
             </plugins>
         </pluginManagement>
 
