@@ -46,7 +46,7 @@ logging:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:10000/eureka/
+      defaultZone: http://47.100.163.218:10000/eureka/
   instance:
     prefer-ip-address: true
 ###########################################################################

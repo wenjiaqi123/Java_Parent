@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       # 云端配置文件 破折号前面的内容
-      name: JavaZuulWeb
+      name: JavChart
       # 云端配置文件 破折号后面的内容
       profile: dev
       # 代码托管平台版本

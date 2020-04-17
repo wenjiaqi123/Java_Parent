@@ -1,6 +1,8 @@
 # application.yml 编码是 UTF-8
 #####################################################################
 server:
+  servlet:
+    context-path: /web
   # 该项目启动的端口号
   port: 8080
 #####################################################################
@@ -22,7 +24,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:10000/eureka/
+      defaultZone: http://47.100.163.218:10000/eureka/
   instance:
     prefer-ip-address: true
 ###########################################################################

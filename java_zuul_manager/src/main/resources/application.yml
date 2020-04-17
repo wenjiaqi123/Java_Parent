@@ -2,7 +2,7 @@
 #####################################################################
 server:
   servlet:
-    context-path: /wyxjava
+    context-path: /admin
   # 该项目启动的端口号
   port: 18080
 #####################################################################
@@ -33,7 +33,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:10000/eureka/
+      defaultZone: http://47.100.163.218:10000/eureka/
   instance:
     prefer-ip-address: true
 ###########################################################################
@@ -58,7 +58,7 @@ zuul:
       serverid: java-base-sms
     # 后台登录注册
     java-login-admin:
-      path: /admin/**
+      path: /login/**
       serverid: java-login-admin
     # 轮播图
     java-chart:

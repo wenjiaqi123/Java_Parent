@@ -12,4 +12,4 @@ spring:
       # 代码托管平台版本
       label: master
       # config服务地址
-      uri: http://localhost:9999
+      uri: http://47.100.163.218:9999

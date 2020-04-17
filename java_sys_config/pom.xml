@@ -28,4 +28,14 @@
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>java_sys_config</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
