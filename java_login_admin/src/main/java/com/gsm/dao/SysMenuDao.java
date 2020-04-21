@@ -1,8 +1,6 @@
 package com.gsm.dao;
 
 import com.gsm.entity.SysMenu;
-import com.gsm.entity.SysMenuRole;
-import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
