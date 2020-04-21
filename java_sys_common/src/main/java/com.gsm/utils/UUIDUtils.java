@@ -16,9 +16,4 @@ public class UUIDUtils {
         String uuid = IdUtil.simpleUUID();
         return uuid;
     }
-
-    public static void main(String[] args) {
-        String uuid = getUUID();
-        System.out.println(uuid);
-    }
 }

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gsm.dao.SysRoleDao">
 
     <select id="selectRoleByUserId" parameterType="Long" resultType="SysRole">
@@ -10,5 +12,67 @@
         where t.role_id = (select t.role_id
                            from sys_user_role t
                            where t.user_id = #{userId})
+    </select>
+
+    <select id="selectRoleList" resultType="SysRole">
+        select t.role_id,
+               t.role_name,
+               t.role_desc,
+               t.status
+        from sys_role t
+        where t.status = 1
+    </select>
+
+    <insert id="insertRole" parameterType="SysRole">
+        insert into sys_role
+        (role_id,
+        role_name,
+        role_desc,
+        status)
+        values
+        (#{roleId},
+        #{roleName},
+        #{roleDesc},
+        #{status})
+    </insert>
+
+    <update id="updateRole" parameterType="SysRole">
+        update sys_role
+        <set>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+            <if test="roleDesc != null and roleDesc != ''">
+                role_desc = #{roleDesc},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where role_id = #{roleId}
+    </update>
+
+    <delete id="deleteRoleById" parameterType="SysRole">
+        delete from sys_role
+        where role_id = #{roleId}
+    </delete>
+
+
+    <select id="selectMenus" parameterType="Long" resultType="RoleMenu">
+        select t.menu_id as menuId,
+               t.menu_name as title,
+               t.menu_pid as pid,
+               t.show_order as showOrder,
+               case
+                 when t2.role_id is not null then 1
+                 when t2.role_id is null then 0
+                 end as flag
+        from sys_menu t
+               left join (
+          select t1.*
+          from sys_menu_role t1
+          where t1.role_id = #{roleId}
+        ) t2 on t.menu_id = t2.menu_id
+        order by t.menu_pid asc, t.show_order asc
     </select>
 </mapper>

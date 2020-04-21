@@ -2,16 +2,17 @@ package com.gsm.service.impl;
 
 import com.gsm.dao.SysRoleDao;
 import com.gsm.dao.SysTokenDao;
-import com.gsm.entity.LoginUser;
-import com.gsm.entity.SysRole;
-import com.gsm.entity.SysUser;
+import com.gsm.entity.*;
 import com.gsm.dao.SysUserDao;
 import com.gsm.service.SysUserService;
+import com.gsm.utils.IdUtils;
 import com.gsm.utils.JwtUtils;
 import com.gsm.utils.MD5Utils;
 import com.gsm.utils.Base64Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 后台管理人员账户(SysUser)表服务实现类
@@ -26,6 +27,8 @@ public class SysUserServiceImpl implements SysUserService {
     private SysRoleDao sysRoleDao;
     @Autowired
     private JwtUtils jwtUtils;
+    @Autowired
+    private IdUtils idUtils;
 
     @Override
     public LoginUser selectSysUserByAccountAndPwd(SysUser sysUser) {
@@ -41,9 +44,9 @@ public class SysUserServiceImpl implements SysUserService {
             String userOpenBase64 = Base64Utils.base64Decode(user.getUserPwdOpen());
             //后台密文，真实密码2次MD5【前后台各一次】
             String userClose = user.getUserPwdClose();
-            if(sysUserOpen.equals(userOpenBase64) && sysUserMD5.equals(userClose)){
+            if (sysUserOpen.equals(userOpenBase64) && sysUserMD5.equals(userClose)) {
                 SysRole role = sysRoleDao.selectRoleByUserId(user.getUserId());
-                String token = jwtUtils.getJwt(Long.toString(user.getUserId()),user.getUserName(),Long.toString(role.getRoleId()),role.getRoleName());
+                String token = jwtUtils.getJwt(Long.toString(user.getUserId()), user.getUserName(), Long.toString(role.getRoleId()), role.getRoleName());
                 loginUser.setToken(token);
                 user.setUserPwdOpen("");
                 user.setUserPwdClose("");
@@ -51,5 +54,42 @@ public class SysUserServiceImpl implements SysUserService {
             }
         }
         return loginUser;
+    }
+
+    @Override
+    public Result selectSysUser() {
+        List<SysUser> list = sysUserDao.selectAllSysUser();
+        list.forEach(i -> {
+            String pwdOpen = i.getUserPwdOpen();
+            i.setUserPwdOpen(Base64Utils.base64Decode(pwdOpen));
+        });
+        Result result = new Result(true, StatusCode.OK, "", list);
+        return result;
+    }
+
+    @Override
+    public Result insertSysUser(SysUser sysUser) {
+        long userId = idUtils.nextId();
+        sysUser.setUserId(userId);
+        sysUser.setUserPwdOpen(Base64Utils.base64Encode(sysUser.getUserPwdOpen()));
+        sysUser.setUserPwdClose(MD5Utils.getMD5(sysUser.getUserPwdClose()));
+        sysUser.setStatus(1);
+        sysUserDao.insertSysUser(sysUser);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result updateSysUser(SysUser sysUser) {
+        sysUserDao.updateSysUser(sysUser);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result deleteSysUserById(Long userId) {
+        sysUserDao.deleteSysUserById(userId);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
     }
 }

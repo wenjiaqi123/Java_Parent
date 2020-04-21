@@ -1,6 +1,7 @@
 package com.gsm.service;
 
 import com.gsm.entity.LoginUser;
+import com.gsm.entity.Result;
 import com.gsm.entity.SysUser;
 import java.util.List;
 
@@ -12,4 +13,12 @@ import java.util.List;
  */
 public interface SysUserService {
     LoginUser selectSysUserByAccountAndPwd(SysUser sysUser);
+
+    Result selectSysUser();
+
+    Result insertSysUser(SysUser sysUser);
+
+    Result updateSysUser(SysUser sysUser);
+
+    Result deleteSysUserById(Long userId);
 }

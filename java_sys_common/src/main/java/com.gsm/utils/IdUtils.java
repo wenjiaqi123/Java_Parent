@@ -148,10 +148,4 @@ public class IdUtils {
         }
         return id;
     }
-
-    public static void main(String[] args) {
-        IdUtils idUtils = new IdUtils(1,1);
-        System.out.println(idUtils.nextId());
-        System.out.println(idUtils.nextId());
-    }
 }

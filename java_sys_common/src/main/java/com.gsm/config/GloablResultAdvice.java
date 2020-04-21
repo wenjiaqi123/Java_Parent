@@ -1,4 +1,4 @@
-package com.gsm;
+package com.gsm.config;
 
 import com.gsm.entity.RespCodeMsg;
 import com.gsm.entity.Result;

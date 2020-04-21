@@ -1,4 +1,4 @@
-package com.gsm;
+package com.gsm.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

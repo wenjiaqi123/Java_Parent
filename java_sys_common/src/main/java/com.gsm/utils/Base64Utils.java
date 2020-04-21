@@ -30,9 +30,4 @@ public class Base64Utils {
         String s = Base64.decodeStr(str);
         return s;
     }
-
-    public static void main(String[] args) {
-        String s = base64Encode("MTExMTEx");
-        System.out.println(s);
-    }
 }
