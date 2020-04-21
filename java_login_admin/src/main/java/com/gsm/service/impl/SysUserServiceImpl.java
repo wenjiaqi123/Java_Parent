@@ -2,6 +2,7 @@ package com.gsm.service.impl;
 
 import com.gsm.dao.SysRoleDao;
 import com.gsm.dao.SysTokenDao;
+import com.gsm.dao.SysUserRoleDao;
 import com.gsm.entity.*;
 import com.gsm.dao.SysUserDao;
 import com.gsm.service.SysUserService;
@@ -25,6 +26,8 @@ public class SysUserServiceImpl implements SysUserService {
     private SysTokenDao sysTokenDao;
     @Autowired
     private SysRoleDao sysRoleDao;
+    @Autowired
+    private SysUserRoleDao sysUserRoleDao;
     @Autowired
     private JwtUtils jwtUtils;
     @Autowired
@@ -81,6 +84,11 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public Result updateSysUser(SysUser sysUser) {
+        String userPwdOpen = sysUser.getUserPwdOpen();
+        String userPwdClose = sysUser.getUserPwdClose();
+
+        sysUser.setUserPwdOpen(Base64Utils.base64Encode(userPwdOpen));
+        sysUser.setUserPwdClose(MD5Utils.getMD5(userPwdClose));
         sysUserDao.updateSysUser(sysUser);
         Result result = new Result(true, StatusCode.OK);
         return result;
@@ -89,6 +97,20 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public Result deleteSysUserById(Long userId) {
         sysUserDao.deleteSysUserById(userId);
+        Result result = new Result(true, StatusCode.OK);
+        return result;
+    }
+
+    @Override
+    public Result updateSysUserRole(Long userId, Long roleId) {
+        sysUserRoleDao.deleteUserRole(userId);
+
+        SysUserRole sysUserRole = SysUserRole.builder()
+                .userRoleId(idUtils.nextId())
+                .userId(userId)
+                .roleId(roleId)
+                .build();
+        sysUserRoleDao.insertUserRole(sysUserRole);
         Result result = new Result(true, StatusCode.OK);
         return result;
     }

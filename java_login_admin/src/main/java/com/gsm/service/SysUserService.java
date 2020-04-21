@@ -3,7 +3,6 @@ package com.gsm.service;
 import com.gsm.entity.LoginUser;
 import com.gsm.entity.Result;
 import com.gsm.entity.SysUser;
-import java.util.List;
 
 /**
  * 后台管理人员账户(SysUser)表服务接口
@@ -21,4 +20,6 @@ public interface SysUserService {
     Result updateSysUser(SysUser sysUser);
 
     Result deleteSysUserById(Long userId);
+
+    Result updateSysUserRole(Long userId, Long roleId);
 }
