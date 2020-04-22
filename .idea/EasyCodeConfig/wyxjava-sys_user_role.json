@@ -1,0 +1,31 @@
+{
+  "name" : "SysUserRole",
+  "comment" : "用户角色表",
+  "fullColumn" : [ {
+    "name" : "userRoleId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "userId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "roleId",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "com.gsm",
+  "savePath" : "./java_login_admin/src/main/java/com/gsm",
+  "saveModelName" : "java_login_admin"
+}
