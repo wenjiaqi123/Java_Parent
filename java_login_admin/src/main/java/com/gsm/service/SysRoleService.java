@@ -23,4 +23,6 @@ public interface SysRoleService {
     Result selectMenus(Long roleId);
 
     Result updateMenusByRoleId(Long roleId, Long[] menusIds);
+
+    Result selectUserRole(Long userId);
 }

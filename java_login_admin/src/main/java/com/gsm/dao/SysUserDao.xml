@@ -20,8 +20,10 @@
                t.user_name,
                t.iphone_no,
                t.user_pwd_open,
+               t.show_order,
                t.status
         from sys_user t
+        order by t.show_order asc
     </select>
 
     <insert id="insertSysUser" parameterType="SysUser">

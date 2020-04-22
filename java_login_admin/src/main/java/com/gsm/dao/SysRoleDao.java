@@ -1,6 +1,7 @@
 package com.gsm.dao;
 
 import com.gsm.entity.RoleMenu;
+import com.gsm.entity.RoleUser;
 import com.gsm.entity.SysRole;
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface SysRoleDao {
     int deleteRoleById(Long roleId);
 
     List<RoleMenu> selectMenus(Long roleId);
+
+    List<RoleUser> selectUserRole(Long userId);
 }

@@ -34,9 +34,12 @@ public class SysUser{
     * 密码密文
     */
     private String userPwdClose;
+
+    private Integer showOrder;
     /**
     * 0失效  1在用
     */
     private Integer status;
 
+    private SysRole sysRole;
 }

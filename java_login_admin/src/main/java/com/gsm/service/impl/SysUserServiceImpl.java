@@ -65,6 +65,8 @@ public class SysUserServiceImpl implements SysUserService {
         list.forEach(i -> {
             String pwdOpen = i.getUserPwdOpen();
             i.setUserPwdOpen(Base64Utils.base64Decode(pwdOpen));
+            SysRole sysRole = sysRoleDao.selectRoleByUserId(i.getUserId());
+            i.setSysRole(sysRole);
         });
         Result result = new Result(true, StatusCode.OK, "", list);
         return result;

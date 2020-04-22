@@ -37,6 +37,15 @@ public class SysRoleController {
     }
 
     /**
+     * 分配角色查询菜单列表
+     */
+    @GetMapping("/menuRole/{userId}")
+    public Result selectUserRole(@PathVariable("userId")Long userId) {
+        Result result = sysRoleService.selectUserRole(userId);
+        return result;
+    }
+
+    /**
      * 新增数据
      */
     @PostMapping("/role")

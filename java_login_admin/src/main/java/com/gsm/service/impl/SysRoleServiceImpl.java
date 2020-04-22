@@ -86,6 +86,13 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
+    public Result selectUserRole(Long userId) {
+        List<RoleUser> list = sysRoleDao.selectUserRole(userId);
+        Result result = new Result(true, StatusCode.OK,"",list);
+        return result;
+    }
+
+    @Override
     public Result insertRole(SysRole sysRole) {
         long roleId = idUtils.nextId();
         sysRole.setRoleId(roleId);
