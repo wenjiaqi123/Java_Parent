@@ -1,12 +1,12 @@
-# bootstrap.yml 编码是 UTF-8     bootstrap.yml 优先级高于 application.yml
-# bootstrap.yml   常用于系统配置，不改动
+# bootstrapbak.yml 编码是 UTF-8     bootstrapbak.yml 优先级高于 application.yml
+# bootstrapbak.yml   常用于系统配置，不改动
 # application.yml 常用于代码配置，
 #####################################################################
 spring:
   cloud:
     config:
       # 云端配置文件 破折号前面的内容
-      name: JavaSysEureka
+      name: JavaComment
       # 云端配置文件 破折号后面的内容
       profile: dev
       # 代码托管平台版本

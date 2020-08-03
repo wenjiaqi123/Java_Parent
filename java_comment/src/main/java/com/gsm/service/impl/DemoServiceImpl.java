@@ -30,6 +30,8 @@ public class DemoServiceImpl implements DemoService {
                 .content(comment.getContent())
                 .nickName(comment.getNickName())
                 .createDate(LocalDateTime.now())
+                .likeNum(comment.getLikeNum())
+                .replyNum(comment.getReplyNum())
                 .state(comment.getState())
                 .parentId(comment.getParentId())
                 .articleId(comment.getArticleId())
@@ -46,7 +48,19 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String updateDemo(Comment comment) {
-        demoDao.save(comment);
+        //demoDao.save(comment);
+        Query query = Query.query(Criteria.where("id").is(comment.getId()));
+        Update update = new Update();
+        if (comment.getContent() != null) {
+            update.set("content", comment.getContent());
+        }
+        if (comment.getUserId() != null) {
+            update.set("userId", comment.getUserId());
+        }
+        if (comment.getState() != null) {
+            update.set("state", comment.getState());
+        }
+        mongoTemplate.updateMulti(query, update, Comment.class);
         return "更新成功";
     }
 
@@ -73,8 +87,8 @@ public class DemoServiceImpl implements DemoService {
     public String updateLikeNum(String id) {
         Query query = Query.query(Criteria.where("_id").is(id));
         Update update = new Update();
-        update.inc("likeNum",1);
-        mongoTemplate.updateFirst(query,update,Comment.class);
+        update.inc("likeNum", 1);
+        mongoTemplate.updateFirst(query, update, Comment.class);
         return "点赞成功";
     }
 }

@@ -1,0 +1,37 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 10108
+#####################################################################
+spring:
+  application:
+    name: java-comment
+  data:
+    mongodb:
+      #主机名
+      host: 127.0.0.1
+      #数据库名
+      database: wyxjava
+      #端口号 默认27017
+      port: 27017
+      #也可以使用uri连接
+      #uri: mongodb:127.0.0.1:27017/wyxjava
+###########################################################################
+#mybatis:
+#  type-aliases-package: com.gsm.entity
+#  mapper-locations: classpath:com/gsm/dao/*Mapper.xml
+#  configuration:
+#    map-underscore-to-camel-case: true
+# log日志等级,mybatis打印sql
+logging:
+  level:
+    com.gsm.dao: DEBUG
+#####################################################################
+# Eureka 配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka/
+  instance:
+    prefer-ip-address: true
