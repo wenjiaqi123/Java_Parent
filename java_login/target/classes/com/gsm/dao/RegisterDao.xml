@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.RegisterDao">
+
+    <select id="selectIphoneNoIsRegister" parameterType="Long" resultType="Integer">
+        select count(1) as total
+        from web_user t
+        where t.status = 1 and iphone_no = #{iphoneNo}
+    </select>
+
+    <insert id="insertWebUser" parameterType="WebUser">
+        insert into web_user
+        (web_user_id,
+         user_name,
+         user_pwd_open,
+         user_pwd_close,
+         identity_card,
+         iphone_no,
+         user_email,
+         head_portrait,
+         create_date,
+         update_date)
+        values
+        (#{webUserId},
+        #{userName},
+        #{userPwdOpen},
+        #{userPwdClose},
+        #{identityCard},
+        #{iphoneNo},
+        #{userEmail},
+        #{headPortrait},
+        #{createDate},
+        #{updateDate})
+    </insert>
+</mapper>

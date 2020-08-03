@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.WebUserDao">
+
+    <!--通过主键修改数据-->
+    <update id="updateWebUserInfoById" parameterType="WebUser">
+        update web_user
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="userPwdOpen != null and userPwdOpen != ''">
+                user_pwd_open = #{userPwdOpen},
+            </if>
+            <if test="userPwdClose != null and userPwdClose != ''">
+                user_pwd_close = #{userPwdClose},
+            </if>
+            <if test="identityCard != null and identityCard != ''">
+                identity_card = #{identityCard},
+            </if>
+            <if test="iphoneNo != null and iphoneNo != ''">
+                iphone_no = #{iphoneNo},
+            </if>
+            <if test="userEmail != null and userEmail != ''">
+                user_email = #{userEmail},
+            </if>
+            <if test="headPortrait != null and headPortrait != ''">
+                head_portrait = #{headPortrait},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate},
+            </if>
+        </set>
+        where web_user_id = #{webUserId}
+    </update>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.CourseDataDao">
+
+    <select id="selectCourseDataListByCourseId" parameterType="Long" resultType="CourseData">
+        select t.course_data_id,
+               t.course_id,
+               t.data_name,
+               t.data_url,
+               t.show_order,
+               t.status
+        from course_data t
+        where t.course_id = #{courseId}
+    </select>
+
+    <insert id="insertCourseDataList" parameterType="CourseData">
+        insert into course_data
+        (course_data_id,
+        course_id,
+        data_name,
+        data_url,
+        show_order)
+        values
+        <foreach collection="list" item="i" separator=",">
+            (#{i.courseDataId},
+             #{i.courseId},
+             #{i.dataName},
+             #{i.dataUrl},
+             #{i.showOrder})
+        </foreach>
+    </insert>
+
+    <delete id="deleteCourseDataByCourseId" parameterType="Long">
+        delete from course_data
+        where course_id = #{courseId}
+    </delete>
+
+</mapper>
