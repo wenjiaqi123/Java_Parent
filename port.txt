@@ -25,4 +25,4 @@ joke        笑话             10105
 qa          问题答案         10106
 talk        码农交流         10107
 comment     评论            10108
-
+redis       redis测试        10109

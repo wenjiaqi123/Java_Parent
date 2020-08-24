@@ -51,6 +51,7 @@
         <!--前台课程聚合-->
         <module>java_web_course</module>
         <module>java_comment</module>
+        <module>java_redis</module>
     </modules>
     <!--子模块-->
     <version>1.0-SNAPSHOT</version>
