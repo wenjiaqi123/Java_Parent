@@ -17,11 +17,13 @@
       <module fileurl="file://$PROJECT_DIR$/java_login/java_login.iml" filepath="$PROJECT_DIR$/java_login/java_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_login_admin/java_login_admin.iml" filepath="$PROJECT_DIR$/java_login_admin/java_login_admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_qa/java_qa.iml" filepath="$PROJECT_DIR$/java_qa/java_qa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_rabbitmq/java_rabbitmq.iml" filepath="$PROJECT_DIR$/java_rabbitmq/java_rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_redis/java_redis.iml" filepath="$PROJECT_DIR$/java_redis/java_redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_sys_common/java_sys_common.iml" filepath="$PROJECT_DIR$/java_sys_common/java_sys_common.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_sys_config/java_sys_config.iml" filepath="$PROJECT_DIR$/java_sys_config/java_sys_config.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_sys_eureka/java_sys_eureka.iml" filepath="$PROJECT_DIR$/java_sys_eureka/java_sys_eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_talk/java_talk.iml" filepath="$PROJECT_DIR$/java_talk/java_talk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_validated/java_validated.iml" filepath="$PROJECT_DIR$/java_validated/java_validated.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_web_course/java_web_course.iml" filepath="$PROJECT_DIR$/java_web_course/java_web_course.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_websocket/java_websocket.iml" filepath="$PROJECT_DIR$/java_websocket/java_websocket.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_zuul_manager/java_zuul_manager.iml" filepath="$PROJECT_DIR$/java_zuul_manager/java_zuul_manager.iml" />

@@ -52,6 +52,8 @@
         <module>java_web_course</module>
         <module>java_comment</module>
         <module>java_redis</module>
+        <module>java_rabbitmq</module>
+        <module>java_validated</module>
     </modules>
     <!--子模块-->
     <version>1.0-SNAPSHOT</version>
