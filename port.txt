@@ -27,6 +27,7 @@ talk        码农交流         10107
 comment     评论            10108
 
 
+
 redis       redis测试        10109
 validated   数据校验          10110
 rabbitmq    消息队列          10111
