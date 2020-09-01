@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="java_log" />
         <module name="java_websocket" />
         <module name="java_icu" />
         <module name="java_zuul_web" />
         <module name="java_base_sms" />
+        <module name="java_qa" />
         <module name="java_talk" />
         <module name="java_chart" />
-        <module name="java_validated" />
         <module name="aaaaa_rabbitmq" />
         <module name="aaaaa_redis" />
         <module name="java_joke" />
@@ -22,7 +23,7 @@
         <module name="java_feedback" />
         <module name="java_sys_common" />
         <module name="java_login_admin" />
-        <module name="java_qa" />
+        <module name="java_validated" />
         <module name="java_login" />
         <module name="java_comment" />
         <module name="java_rabbitmq" />
@@ -45,6 +46,7 @@
       <module name="java_feedback" target="1.8" />
       <module name="java_icu" target="1.8" />
       <module name="java_joke" target="1.8" />
+      <module name="java_log" target="1.8" />
       <module name="java_login" target="1.8" />
       <module name="java_login_admin" target="1.8" />
       <module name="Java_Parent" target="1.8" />
@@ -75,6 +77,7 @@
       <module name="java_feedback" options="-parameters" />
       <module name="java_icu" options="-parameters" />
       <module name="java_joke" options="-parameters" />
+      <module name="java_log" options="-parameters" />
       <module name="java_login" options="-parameters" />
       <module name="java_login_admin" options="-parameters" />
       <module name="java_qa" options="-parameters" />
