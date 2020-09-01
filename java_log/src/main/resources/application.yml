@@ -1,0 +1,34 @@
+# application.yml 编码是 UTF-8
+#####################################################################
+server:
+  # 该项目启动的端口号
+  port: 10112
+#####################################################################
+spring:
+  application:
+    name: java-log
+  # 数据源
+  datasource:
+    # 数据源驱动   多个单词之间可以不用中划线，换成大写  【driver-class-name】【driverClassName】
+    driver-class-name: com.mysql.jdbc.Driver
+    # 数据库url      【时区】serverTimezone=Asia/Shanghai    【连接】useSSL=false&autoReconnect=true   【批量操作】allowMultiQueries=true  【字符编码】characterEncoding=UTF-8
+    url: jdbc:mysql://cdb-jwd16kdk.bj.tencentcdb.com:10069/wyxjava?useSSL=false&allowMultiQueries=true&autoReconnect=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8
+    # 数据库用户名
+    username: root
+    # 数据库用户密码
+    password: wyxjava123
+#####################################################################
+# 日志配置
+logging:
+  # 日志等级
+  level:
+    # root 表示作用域为整个项目,作用等级为 INFO(大小写无关),默认的 DEBUG,作用等级
+    root: info
+    # 也可以对某个的包 进行特定等级打日志
+    com.gsm.dao: debug
+  # 日志路径 默认日志文件名为 spring.log
+  #path: D:\\log
+  # 日志输出到该文件
+  #file: D:\\test\\project.log
+  # 如果使用其他配置,缺省配置为 logback-spring.xml
+  #config: classpath:logback-spring.xml
