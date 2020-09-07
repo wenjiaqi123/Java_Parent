@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/aaaaa_mysql/aaaaa_mysql.iml" filepath="$PROJECT_DIR$/aaaaa_mysql/aaaaa_mysql.iml" />
       <module fileurl="file://$PROJECT_DIR$/aaaaa_rabbitmq/aaaaa_rabbitmq.iml" filepath="$PROJECT_DIR$/aaaaa_rabbitmq/aaaaa_rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/aaaaa_redis/aaaaa_redis.iml" filepath="$PROJECT_DIR$/aaaaa_redis/aaaaa_redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_async/java_async.iml" filepath="$PROJECT_DIR$/java_async/java_async.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_base_file/java_base_file.iml" filepath="$PROJECT_DIR$/java_base_file/java_base_file.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_base_sms/java_base_sms.iml" filepath="$PROJECT_DIR$/java_base_sms/java_base_sms.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_chart/java_chart.iml" filepath="$PROJECT_DIR$/java_chart/java_chart.iml" />
@@ -13,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/java_course/java_course.iml" filepath="$PROJECT_DIR$/java_course/java_course.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_feedback/java_feedback.iml" filepath="$PROJECT_DIR$/java_feedback/java_feedback.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_icu/java_icu.iml" filepath="$PROJECT_DIR$/java_icu/java_icu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_japi/java_japi.iml" filepath="$PROJECT_DIR$/java_japi/java_japi.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_joke/java_joke.iml" filepath="$PROJECT_DIR$/java_joke/java_joke.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_log/java_log.iml" filepath="$PROJECT_DIR$/java_log/java_log.iml" />
       <module fileurl="file://$PROJECT_DIR$/java_login/java_login.iml" filepath="$PROJECT_DIR$/java_login/java_login.iml" />

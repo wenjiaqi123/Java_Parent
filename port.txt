@@ -30,3 +30,5 @@ redis       redis测试        10109
 validated   数据校验          10110
 rabbitmq    消息队列          10111
 log         日志框架          10112
+async       异步执行          10113
+japi        接口文档          10114

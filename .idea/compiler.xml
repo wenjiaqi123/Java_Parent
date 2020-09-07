@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="java_log" />
+        <module name="java_redis" />
         <module name="java_websocket" />
         <module name="java_icu" />
         <module name="java_zuul_web" />
@@ -19,11 +19,13 @@
         <module name="java_joke" />
         <module name="java_web_course" />
         <module name="java_sys_eureka" />
-        <module name="java_sys_config" />
+        <module name="java_log" />
         <module name="java_feedback" />
+        <module name="java_japi" />
         <module name="java_sys_common" />
         <module name="java_login_admin" />
         <module name="java_validated" />
+        <module name="java_sys_config" />
         <module name="java_login" />
         <module name="java_comment" />
         <module name="java_rabbitmq" />
@@ -31,13 +33,14 @@
         <module name="java_zuul_manager" />
         <module name="java_course" />
         <module name="aaaaa_mysql" />
-        <module name="java_redis" />
+        <module name="java_async" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="aaaaa_mysql" target="1.8" />
       <module name="aaaaa_rabbitmq" target="1.8" />
       <module name="aaaaa_redis" target="1.8" />
+      <module name="java_async" target="1.8" />
       <module name="java_base_file" target="1.8" />
       <module name="java_base_sms" target="1.8" />
       <module name="java_chart" target="1.8" />
@@ -45,6 +48,7 @@
       <module name="java_course" target="1.8" />
       <module name="java_feedback" target="1.8" />
       <module name="java_icu" target="1.8" />
+      <module name="java_japi" target="1.8" />
       <module name="java_joke" target="1.8" />
       <module name="java_log" target="1.8" />
       <module name="java_login" target="1.8" />
@@ -69,6 +73,7 @@
       <module name="aaaaa_mysql" options="-parameters" />
       <module name="aaaaa_rabbitmq" options="-parameters" />
       <module name="aaaaa_redis" options="-parameters" />
+      <module name="java_async" options="-parameters" />
       <module name="java_base_file" options="-parameters" />
       <module name="java_base_sms" options="-parameters" />
       <module name="java_chart" options="-parameters" />
@@ -76,6 +81,7 @@
       <module name="java_course" options="-parameters" />
       <module name="java_feedback" options="-parameters" />
       <module name="java_icu" options="-parameters" />
+      <module name="java_japi" options="-parameters" />
       <module name="java_joke" options="-parameters" />
       <module name="java_log" options="-parameters" />
       <module name="java_login" options="-parameters" />
